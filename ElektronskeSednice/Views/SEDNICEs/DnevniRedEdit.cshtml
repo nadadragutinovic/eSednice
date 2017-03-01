@@ -1,0 +1,226 @@
+﻿@model IEnumerable<ElektronskeSednice.Models.Tacke_Dnevnog_Reda>
+
+@{
+    ViewBag.Title = ViewRes.SedniceStrings.DnevniRed;
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $("#btnNovaTacka").click(function () {
+            $("#novaTackaDRUnos").slideToggle("slow");
+        });
+
+        $(window).load(function () {
+            $.fn.fileUploader = function (filesToUpload, sectionIdentifier) {
+                var fileIdCounter = 0;
+
+                this.closest(".files").change(function (evt) {
+                    var output = [];
+
+                    for (var i = 0; i < evt.target.files.length; i++) {
+                        fileIdCounter++;
+                        var file = evt.target.files[i];
+                        var fileId = sectionIdentifier + fileIdCounter;
+
+                        filesToUpload.push({
+                            id: fileId,
+                            file: file
+                        });
+
+                        var removeLink = "<button type='button' class='btn btn-danger btn-sm removeFile' aria-label='Left Align' data-fileid=\"" + fileId + "\"><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>";
+
+                        output.push("<li>", removeLink, " &nbsp; &nbsp; <strong>", fileIdCounter, ". &nbsp; ", file.name, "</strong></li> ");
+                    };
+
+                    $(this).children(".fileList")
+                        .append(output.join(""));
+
+                    //reset the input to null - nice little chrome bug!
+                    evt.target.value = null;
+                });
+
+                $(this).on("click", ".removeFile", function (e) {
+                    e.preventDefault();
+
+                    var fileId = $(this).parent().children("button").data("fileid");
+
+                    // loop through the files array and check if the name of that file matches FileName
+                    // and get the index of the match
+                    for (var i = 0; i < filesToUpload.length; ++i) {
+                        if (filesToUpload[i].id === fileId)
+                            filesToUpload.splice(i, 1);
+                    }
+
+                    $(this).parent().remove();
+                });
+
+                this.clear = function () {
+                    for (var i = 0; i < filesToUpload.length; ++i) {
+                        if (filesToUpload[i].id.indexOf(sectionIdentifier) >= 0)
+                            filesToUpload.splice(i, 1);
+                    }
+
+                    $(this).children(".fileList").empty();
+                }
+
+                return this;
+            };
+
+            (function () {
+                var filesToUpload = [];
+
+                var files1Uploader = $("#files1").fileUploader(filesToUpload, "files1");
+
+                $("#btnUnesiTacku").click(function (e) {
+                    e.preventDefault();
+
+                    var formData = new FormData();
+
+                    for (var i = 0, len = filesToUpload.length; i < len; i++) {
+                        formData.append("files", filesToUpload[i].file);
+                    }
+                    var sednicaId = getParamValuesByName("sednicaID");
+                    var brojTacke = $("#brojTackeDR").val();
+                    var nazivTacke = $("#nazivTackeDR").val();
+                    var subjekat = $("#SUBJEKAT option:selected").val();
+
+                    formData.append('sednicaId', sednicaId);
+                    formData.append('brojTacke', brojTacke);
+                    formData.append('nazivTacke', nazivTacke);
+                    formData.append('subjekat', subjekat);
+
+                    $.ajax({
+                        url: '@Url.Action("SacuvajTackuDnevnogReda", "SEDNICEs")',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        type: "POST",
+                        success: function (data) {
+                            alert("DONE");
+
+                            files1Uploader.clear();
+                        },
+                        error: function (data) {
+                            alert("ERROR - " + data.responseText);
+                        }
+                    });
+                });
+            })()
+        });
+
+    </script>
+
+}
+
+
+<h2>@ViewRes.SedniceStrings.DnevniRed</h2>
+
+<button type="button" class="btn btn-success pull-right" id="btnNovaTacka">@ViewRes.SedniceStrings.NovaTackaDR</button>
+
+<div class="col-md-12 jumbotron" id="novaTackaDRUnos">
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-2">Broj tačke</div>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="brojTackeDR"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">Naziv tačke</div>
+                    <div class="col-md-10">
+                        @*<input type="text" class="form-control" id="nazivTacke" />*@
+                        <textarea class="form-control" rows="3" id="nazivTackeDR"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">Predlagač</div>
+                    <div class="col-md-10">
+                        @Html.DropDownList("SUBJEKAT", null, "---", htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-2">Dokumenta</div>
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <div class="files" id="files1">
+                                <label class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        Odaberi&hellip; <input type="file" name="files1" multiple />
+                                    </span>
+                                </label>
+                                <br />
+                                <ul class="fileList btn-wrapper"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-default pull-right" id="btnUnesiTacku">Sacuvaj</button>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr class="active">
+            <th>
+                @ViewRes.SedniceStrings.NazivTacke
+            </th>
+            <th>
+                @ViewRes.SedniceStrings.Predlagac
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var list = Model.ToList();
+            for (int item = 0; item < list.Count; item++)
+            {
+                <tr>
+                    <td colspan="2">
+                        @if (item == 0)
+                        {
+                            @Html.DisplayFor(modelItem => list[item].Naziv_tacke)                        ;
+                        }
+                        @if (item > 0 && (list[item - 1].Redni_broj != list[item].Redni_broj))
+                        {
+                            @Html.DisplayFor(modelItem => list[item].Redni_broj) <text>. </text> @Html.DisplayFor(modelItem => list[item].Naziv_tacke);
+
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    @if (!string.IsNullOrEmpty(list[item].Link_Dokumenta))
+                    {
+                        <td>
+
+                            <ul>
+                                <li>
+                                    <a href="@Html.DisplayFor(modelItem => list[item].Link_Dokumenta)">@Html.DisplayFor(modelItem => list[item].DOKUMENTA.NAZIV)</a>
+                                </li>
+                            </ul>
+
+                        </td>
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => list[item].SUBJEKAT.NAZIV)
+                    </td>
+                </tr>
+            }
+        }
+    <tbody>
+</table>
+<div>
+    @Html.ActionLink(ViewRes.SharedStrings.Nazad, "Administracija")
+</div>
+
+

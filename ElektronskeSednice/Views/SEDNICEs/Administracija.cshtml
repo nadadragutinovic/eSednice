@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ElektronskeSednice.Models.SEDNICE>
+
+@{
+    ViewBag.Title = "Administracija";
+}
+
+<h2>Administracija</h2>
+
+<p>
+    @Html.ActionLink(@ViewRes.SedniceStrings.NovaSednica, "Create")
+</p>
+<p>@ViewBag.SednicaUneta</p>
+<table class="table">
+    <tr>
+        <th>
+            @ViewRes.SedniceStrings.Organ
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BROJ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATUM)
+        </th>
+        <th>
+            @ViewRes.SedniceStrings.SednicuSaziva
+        </th>
+        <th>
+            @ViewRes.SedniceStrings.TipSednice
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SUBJEKAT1.NAZIV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BROJ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATUM, "{0:dd.MM.yyyy HH:mm}")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KORISNIK.IME) @Html.DisplayFor(modelItem => item.KORISNIK.PREZIME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIP_SEDNICE1.OPIS)
+            </td>
+            <td>
+                @Html.ActionLink(ViewRes.SharedStrings.Izmeni, "Edit", new { id = item.ID }) |
+                @Html.ActionLink(ViewRes.SedniceStrings.DnevniRed, "DnevniRedEdit", new { sednicaID = item.ID}) |
+                @Html.ActionLink(ViewRes.SedniceStrings.Pozivanje, "Pozivanje", new { sednicaID = item.ID})
+            </td>
+        </tr>
+    }
+
+</table>

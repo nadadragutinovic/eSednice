@@ -1,0 +1,169 @@
+﻿@model ElektronskeSednice.Models.PozvaniKorisnici
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+        $('input[type="checkbox"]').change(function (e) {
+
+            var checked = $(this).prop("checked"),
+                container = $(this).parent(),
+                siblings = container.siblings();
+
+            container.find('input[type="checkbox"]').prop({
+                indeterminate: false,
+                checked: checked
+            });
+
+            function checkSiblings(el) {
+
+                var parent = el.parent().parent(),
+                    all = true;
+
+                el.siblings().each(function () {
+                    return all = ($(this).children('input[type="checkbox"]').prop("checked") === checked);
+                });
+
+                if (all && checked) {
+
+                    parent.children('input[type="checkbox"]').prop({
+                        indeterminate: false,
+                        checked: checked
+                    });
+
+                    checkSiblings(parent);
+
+                } else if (all && !checked) {
+
+                    parent.children('input[type="checkbox"]').prop("checked", checked);
+                    parent.children('input[type="checkbox"]').prop("indeterminate", (parent.find('input[type="checkbox"]:checked').length > 0));
+                    checkSiblings(parent);
+
+                } else {
+
+                    el.parents("li").children('input[type="checkbox"]').prop({
+                        indeterminate: true,
+                        checked: false
+                    });
+
+                }
+
+            }
+
+            checkSiblings(container);
+        });
+        $("#new").on("click", function () {
+
+            var arrayIds = [];
+            var sednicaId = parseInt(document.getElementById('sednicaId').value);
+            var aplikacijaPozivanje = document.getElementById('aplikacijaPozivanje').checked;
+            var smsPozivanje = document.getElementById('smsPozivanje').checked;
+            var mailPozivanje = document.getElementById('mailPozivanje').checked;
+            var x = document.getElementsByClassName('invited');
+            for (var i = 0; i < x.length; i++) {
+                if (x[i].checked) {
+                    arrayIds.push(x[i].id);
+                }
+            }
+            if (!aplikacijaPozivanje && !smsPozivanje && !mailPozivanje) {
+                $("#obavestenje").modal('toggle');
+                $("#obavestenje p").html('Odaberite način obaveštenja korisnika.');
+            }
+            else {
+                $.post(
+                    '@Url.Action("SlanjeObavestenja", "SEDNICEs")',
+                    $.param({ pozvaniClanovi: arrayIds, sednicaId: sednicaId, aplikacija: aplikacijaPozivanje, sms: smsPozivanje, mail: mailPozivanje }, true),
+                    function (data) {
+                        if (data.message == "ok") {
+                            window.location.hash = '#home';
+                            window.location.reload(true);
+                        }
+                        else if (data.message == "error") {
+                            $("#obavestenje").modal('toggle');
+                            $("#obavestenje p").html('Odaberite korisnike koje želite da pozovete.');
+                        }
+                    }
+                    );
+            }
+        });
+    </script>
+}
+
+@{
+    ViewBag.Title = "Pozivanje";
+}
+<section id="home"></section>
+<h2>Pozivanje</h2>
+
+<input type="hidden" id="sednicaId" value="@ViewBag.SednicaId" />
+<div class="form-group">
+    <div class="col-md-6">
+        <ul class="list-group">
+            @{
+                var list = Model.Korisnik_Subjekat.GroupBy(item => item.SUBJEKAT.NAZIV).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-plus-sign" data-toggle="collapse" href="#collapse@(i)"></span>
+                        <input type="checkbox" id="@Html.Encode(list[i].Key)" />
+                        <label for="@Html.Encode(list[i].Key)">@Html.Encode(list[i].Key)</label>
+                        <div id="collapse@(i)" class="panel-collapse collapse">
+                            <ul>
+                                @foreach (var item in list[i])
+                                {
+                                    <li>
+                                        <input type="checkbox" id="@Html.Encode(item.KORISNIK.ID)" class="invited" />
+                                        <label for="@Html.Encode(item.KORISNIK.ID)">@Html.Encode(item.KORISNIK.Naziv)</label>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </li>
+                }
+            }
+        </ul>
+        <div class="form-group">
+            <div class="checkbox col-md-6">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="aplikacijaPozivanje">Aplikacija
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="mailPozivanje">Mejl
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="smsPozivanje">SMS
+                </label>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-default pull-right" id="btnPosaljiPoziv">Pošalji poziv</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-6">
+        Članovi kojima je upućen poziv
+        @Html.Partial("_PozvaniKorisnici", Model.Pozvani_Korisnici)
+    </div>
+</div>
+<div class="col-md-12">
+    @Html.ActionLink(ViewRes.SharedStrings.Nazad, "Administracija")
+</div>
+<div class="modal" id="obavestenje">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Greška</h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ElektronskeSednice.Models.Pozvani_Korisnici>
+<table class="table small">
+    <thead>
+        <tr class="active">
+            <th>
+                Korisnik
+            </th>
+            <th>
+                Aplikacija
+            </th>
+            <th>
+                Mejl
+            </th>
+            <th>
+                SMS
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var list = Model.ToList();
+            for (int item = 0; item < list.Count; item++)
+            {
+                var sistem = list[item].Sistem.GetValueOrDefault(false);
+                var mail = list[item].Mail.GetValueOrDefault(false);
+                var sms = list[item].SMS.GetValueOrDefault(false);
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => list[item].KORISNIK.Naziv)</td>
+                    <td>@Html.CheckBoxFor(modelItem => sistem, new { @disabled = "disabled" })</td>
+                    <td>@Html.CheckBoxFor(modelItem => mail, new { @disabled = "disabled" })</td>
+                    <td>@Html.CheckBoxFor(modelItem => sms, new { @disabled = "disabled" })</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

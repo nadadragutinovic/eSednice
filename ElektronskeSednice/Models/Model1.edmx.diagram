@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="78d804ec55f94fcf9a0063813dfedfb8" Name="Diagram1">
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Amandman" Width="1.5" PointX="6" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.AmandmanDok_pomocna" Width="1.5" PointX="14.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Amandmani_pomocna" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.DOKUMENTA" Width="1.5" PointX="12" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Dokumenta_Subjekat" Width="1.5" PointX="14.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Hitan_Postupak" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Izmene_DnReda" Width="1.5" PointX="3" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Klase_dnevnog_reda" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Komentar" Width="1.5" PointX="14.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Komentar_Tacka" Width="1.5" PointX="16.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.KORISNIK" Width="1.5" PointX="0.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.KORISNIK_SUBJEKAT" Width="1.5" PointX="6" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Logovi" Width="1.5" PointX="3" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Mail" Width="1.5" PointX="11.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Masovna" Width="1.5" PointX="6" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Masovna_poruka" Width="1.5" PointX="3.75" PointY="40" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.MasovniMail" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.MasovniMail_Poruka" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Poruke" Width="1.5" PointX="3" PointY="45" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Pozvani_Korisnici" Width="1.5" PointX="9" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Pristup_Korisnik" Width="1.5" PointX="3" PointY="53.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.SEDNICE" Width="1.5" PointX="9" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.STATUS_AKATA" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Status_dokumenta" Width="1.5" PointX="9.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.SUBJEKAT" Width="1.5" PointX="6.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Tacke_Dnevnog_Reda" Width="1.5" PointX="14.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.TIP_SEDNICE" Width="1.5" PointX="6.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.ZakljucakAmandman" Width="1.5" PointX="8.25" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.Zapisnik" Width="1.5" PointX="11.25" PointY="26" IsExpanded="true" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Amandman_DOKUMENTA" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Amandman_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_ZakljucakAmandman_Amandman" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_AmandmanDok_pomocna_DOKUMENTA" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Amandmani_pomocna_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_DOKUMENTA_Status_dokumenta" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Dokumenta_Subjekat_DOKUMENTA" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Dokumenta_Subjekat_DOKUMENTA1" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Komentar_DOKUMENTA" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Tacke_Dnevnog_Reda_DOKUMENTA" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Dokumenta_Subjekat_SUBJEKAT" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Hitan_Postupak_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Izmene_DnReda_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Izmene_DnReda_SEDNICE" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Komentar_Tacka_Tacke_Dnevnog_Reda" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_KORISNIK_SUBJEKAT_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Logovi_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Masovna_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_MasovniMail_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Poruke_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Pozvani_Korisnici_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Pristup_Korisnik_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_SEDNICE_KORISNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_KORISNIK_SUBJEKAT_SUBJEKAT" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Mail_SEDNICE" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Masovna_Masovna_poruka" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_MasovniMail_MasovniMail_Poruka" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Pozvani_Korisnici_SEDNICE" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_SEDNICE_SUBJEKAT" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_SEDNICE_TIP_SEDNICE" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Tacke_Dnevnog_Reda_SEDNICE" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Zapisnik_SEDNICE" ManuallyRouted="false" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_Tacke_Dnevnog_Reda_SUBJEKAT" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.C__MigrationHistory" Width="1.5" PointX="5.25" PointY="0.5" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.AspNetRole" Width="1.5" PointX="3.25" PointY="5.25" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.AspNetUserClaim" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.AspNetUserLogin" Width="1.5" PointX="7.75" PointY="6.5" />
+        <EntityTypeShape EntityType="E_Sednice_Indjija_newModel.AspNetUser" Width="1.5" PointX="5.5" PointY="4.125" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="E_Sednice_Indjija_newModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

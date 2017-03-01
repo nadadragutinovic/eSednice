@@ -1,0 +1,2620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="E_Sednice_Indjija_newModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Amandman">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="Postavio" Type="int" />
+          <Property Name="Tekst" Type="ntext" />
+          <Property Name="Odnosi_se" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Obrazlozenje" Type="ntext" />
+          <Property Name="Dokument" Type="int" />
+          <Property Name="Blagovremen" Type="bit" />
+          <Property Name="odustao" Type="bit" />
+          <Property Name="vreme_odustao" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AmandmanDok_pomocna">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amandman" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dokument" Type="int" />
+          <Property Name="KorisniKU" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Amandmani_pomocna">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amandman" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dnevni_Red" Type="nvarchar" MaxLength="50" />
+          <Property Name="Odbornik" Type="int" />
+          <Property Name="KorisnikU" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOKUMENTA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAZIV" Type="nvarchar" MaxLength="255" />
+          <Property Name="BROJ" Type="nvarchar" MaxLength="255" />
+          <Property Name="DATUM_USVAJANJA" Type="datetime" />
+          <Property Name="POSTAVIO" Type="int" />
+          <Property Name="TEKST" Type="ntext" />
+          <Property Name="LINK" Type="nvarchar" MaxLength="4000" />
+          <Property Name="LINK_ZAVRSEN" Type="nvarchar" MaxLength="4000" />
+          <Property Name="STATUS" Type="int" />
+          <Property Name="DATUM_POCETKA_PRIMENE" Type="datetime" />
+          <Property Name="Osnovni_dokument" Type="bit" />
+          <Property Name="ID_Osnovnog_Dokumenta" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Dokumenta_Subjekat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_DOKUMENTA" Type="int" />
+          <Property Name="ID_SUBJEKAT" Type="int" />
+          <Property Name="KORAK_ZAVRSEN" Type="bit" />
+          <Property Name="REDNI_BROJ" Type="int" />
+          <Property Name="Postavio_korisnik" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vreme" Type="smalldatetime" />
+          <Property Name="Brojac" Type="int" />
+          <Property Name="ID_Verzija_Dokumenta" Type="int" />
+        </EntityType>
+        <EntityType Name="Hitan_Postupak">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Korisnik" Type="int" />
+          <Property Name="Tekst" Type="ntext" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="Sednice" Type="int" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Izmene_DnReda">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sednica" Type="int" />
+          <Property Name="Korisnik" Type="int" />
+          <Property Name="Tekst" Type="ntext" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="blagovremena" Type="bit" />
+          <Property Name="tacka" Type="nvarchar" MaxLength="500" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Klase_dnevnog_reda">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Klase" Type="nvarchar" MaxLength="255" />
+          <Property Name="AKTIVAN" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Komentar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Komentar" Type="ntext" />
+          <Property Name="Postavio" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vreme" Type="smalldatetime" />
+          <Property Name="Dokument" Type="int" />
+          <Property Name="Odnosi_Se" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Komentar_Tacka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Komentar" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Postavio" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vreme" Type="datetime" />
+          <Property Name="Tacka" Type="int" />
+        </EntityType>
+        <EntityType Name="KORISNIK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IME" Type="nvarchar" MaxLength="255" />
+          <Property Name="PREZIME" Type="nvarchar" MaxLength="255" />
+          <Property Name="JMBG" Type="nvarchar" MaxLength="255" />
+          <Property Name="FUNKCIJA" Type="nvarchar" MaxLength="255" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="LOZINKA" Type="nvarchar" MaxLength="255" />
+          <Property Name="MAIL" Type="nvarchar" MaxLength="255" />
+          <Property Name="MOBILNI" Type="nvarchar" MaxLength="255" />
+          <Property Name="Aktivan" Type="bit" />
+          <Property Name="Potrebna_potvrda" Type="int" />
+          <Property Name="admin" Type="bit" />
+          <Property Name="sluzbeno" Type="bit" />
+        </EntityType>
+        <EntityType Name="KORISNIK_SUBJEKAT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_SUBJEKAT" Type="int" />
+          <Property Name="ID_KORISNIK" Type="int" />
+          <Property Name="PRIPADA_GRUPI" Type="bit" />
+          <Property Name="DATUM" Type="smalldatetime" />
+          <Property Name="Prva" Type="bit" />
+        </EntityType>
+        <EntityType Name="Logovi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="vreme" Type="datetime" />
+          <Property Name="korisnikID" Type="int" />
+        </EntityType>
+        <EntityType Name="Mail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sednica_ID" Type="int" />
+          <Property Name="Mailovi" Type="ntext" />
+          <Property Name="Datum" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Masovna">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Poruka" Type="int" />
+          <Property Name="Prima" Type="int" />
+        </EntityType>
+        <EntityType Name="Masovna_poruka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tekst" Type="nvarchar" MaxLength="200" />
+          <Property Name="Vreme" Type="datetime" />
+          <Property Name="Poslat" Type="bit" />
+          <Property Name="Salje" Type="int" />
+        </EntityType>
+        <EntityType Name="MasovniMail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Poruka" Type="int" />
+          <Property Name="Prima" Type="int" />
+        </EntityType>
+        <EntityType Name="MasovniMail_Poruka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tekst" Type="nvarchar" MaxLength="200" />
+          <Property Name="Vreme" Type="datetime" />
+          <Property Name="Poslat" Type="bit" />
+          <Property Name="Salje" Type="int" />
+        </EntityType>
+        <EntityType Name="Poruke">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Salje" Type="int" />
+          <Property Name="Tekst" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Prima" Type="int" />
+          <Property Name="procitana" Type="bit" />
+          <Property Name="Vreme" Type="datetime" />
+          <Property Name="slanje" Type="int" />
+        </EntityType>
+        <EntityType Name="Pozvani_Korisnici">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Korisnik_ID" Type="int" />
+          <Property Name="Sednica_ID" Type="int" />
+          <Property Name="Potvrdio" Type="bit" />
+          <Property Name="Vreme_potvrde" Type="datetime" />
+          <Property Name="Mail" Type="bit" />
+          <Property Name="SMS" Type="bit" />
+          <Property Name="Komentar" Type="nvarchar" MaxLength="255" />
+          <Property Name="Prisustvuje" Type="bit" />
+          <Property Name="Prikaz" Type="bit" />
+          <Property Name="Datum_SMS" Type="datetime" />
+          <Property Name="Datum_Mail" Type="datetime" />
+          <Property Name="Vreme_Pozvan" Type="datetime" />
+          <Property Name="Sistem" Type="bit" />
+        </EntityType>
+        <EntityType Name="Pristup_Korisnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Korisnik" Type="int" />
+          <Property Name="Sednice" Type="int" />
+          <Property Name="Zapisnik" Type="int" />
+          <Property Name="Dokumenta" Type="int" />
+          <Property Name="Clanovi" Type="int" />
+          <Property Name="Lozinka" Type="int" />
+          <Property Name="Organ" Type="int" />
+          <Property Name="Statusi" Type="int" />
+          <Property Name="Pozivanje" Type="int" />
+          <Property Name="Amandmani" Type="int" />
+          <Property Name="Dnevni_red" Type="int" />
+          <Property Name="IzmenaDnRedaPosle24Sata" Type="bit" />
+          <Property Name="Komentari" Type="bit" />
+        </EntityType>
+        <EntityType Name="SEDNICE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BROJ" Type="nvarchar" MaxLength="255" />
+          <Property Name="SUBJEKAT" Type="int" />
+          <Property Name="DATUM" Type="datetime" />
+          <Property Name="Vreme_sat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vreme_minut" Type="nvarchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_time" Type="smalldatetime" />
+          <Property Name="TIP_SEDNICE" Type="int" />
+          <Property Name="Predsedava" Type="int" />
+          <Property Name="Zavrsena" Type="bit" Nullable="false" />
+          <Property Name="Brojac" Type="int" />
+          <Property Name="datum_pretraga" Type="smalldatetime" />
+          <Property Name="zavodni_broj" Type="nvarchar" MaxLength="50" />
+          <Property Name="mesto" Type="nvarchar" MaxLength="255" />
+          <Property Name="na_osnovu" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="STATUS_AKATA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="255" />
+          <Property Name="AKTIVAN" Type="bit" />
+        </EntityType>
+        <EntityType Name="Status_dokumenta">
+          <Key>
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SUBJEKAT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAZIV" Type="nvarchar" MaxLength="255" />
+          <Property Name="KOMENTAR" Type="ntext" />
+          <Property Name="AKTIVAN" Type="bit" />
+          <Property Name="Predlagac" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tacke_Dnevnog_Reda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv_tacke" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Dokument" Type="int" />
+          <Property Name="Sednica" Type="int" />
+          <Property Name="Redni_broj" Type="int" />
+          <Property Name="Verzija" Type="bit" />
+          <Property Name="Link_Dokumenta" Type="nvarchar" MaxLength="255" />
+          <Property Name="prva" Type="bit" />
+          <Property Name="hitna" Type="bit" />
+          <Property Name="predlagac" Type="int" />
+        </EntityType>
+        <EntityType Name="TIP_SEDNICE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OPIS" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ZakljucakAmandman">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amandman" Type="int" />
+          <Property Name="Tekst" Type="nvarchar" MaxLength="3000" />
+          <Property Name="KorisnikU" Type="int" />
+          <Property Name="Vreme" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Zapisnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Zapisnik" Type="ntext" />
+          <Property Name="Audio_zapis" Type="ntext" />
+          <Property Name="Broj_sednice" Type="int" />
+        </EntityType>
+        <Association Name="FK_Amandman_DOKUMENTA">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="Amandman" Type="Self.Amandman" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Amandman">
+              <PropertyRef Name="Dokument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Amandman_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Amandman" Type="Self.Amandman" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Amandman">
+              <PropertyRef Name="Postavio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AmandmanDok_pomocna_DOKUMENTA">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="AmandmanDok_pomocna" Type="Self.AmandmanDok_pomocna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AmandmanDok_pomocna">
+              <PropertyRef Name="Dokument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Amandmani_pomocna_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Amandmani_pomocna" Type="Self.Amandmani_pomocna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Amandmani_pomocna">
+              <PropertyRef Name="Odbornik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOKUMENTA_Status_dokumenta">
+          <End Role="Status_dokumenta" Type="Self.Status_dokumenta" Multiplicity="0..1" />
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_dokumenta">
+              <PropertyRef Name="Status" />
+            </Principal>
+            <Dependent Role="DOKUMENTA">
+              <PropertyRef Name="STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokumenta_Subjekat_DOKUMENTA">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="Dokumenta_Subjekat" Type="Self.Dokumenta_Subjekat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dokumenta_Subjekat">
+              <PropertyRef Name="ID_DOKUMENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokumenta_Subjekat_DOKUMENTA1">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="Dokumenta_Subjekat" Type="Self.Dokumenta_Subjekat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dokumenta_Subjekat">
+              <PropertyRef Name="ID_Verzija_Dokumenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokumenta_Subjekat_SUBJEKAT">
+          <End Role="SUBJEKAT" Type="Self.SUBJEKAT" Multiplicity="0..1" />
+          <End Role="Dokumenta_Subjekat" Type="Self.Dokumenta_Subjekat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJEKAT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dokumenta_Subjekat">
+              <PropertyRef Name="ID_SUBJEKAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hitan_Postupak_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Hitan_Postupak" Type="Self.Hitan_Postupak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hitan_Postupak">
+              <PropertyRef Name="Korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izmene_DnReda_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Izmene_DnReda" Type="Self.Izmene_DnReda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Izmene_DnReda">
+              <PropertyRef Name="Korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izmene_DnReda_SEDNICE">
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="0..1" />
+          <End Role="Izmene_DnReda" Type="Self.Izmene_DnReda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Izmene_DnReda">
+              <PropertyRef Name="Sednica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Komentar_DOKUMENTA">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="Komentar" Type="Self.Komentar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Komentar">
+              <PropertyRef Name="Dokument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Komentar_Tacka_Tacke_Dnevnog_Reda">
+          <End Role="Tacke_Dnevnog_Reda" Type="Self.Tacke_Dnevnog_Reda" Multiplicity="0..1" />
+          <End Role="Komentar_Tacka" Type="Self.Komentar_Tacka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tacke_Dnevnog_Reda">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Komentar_Tacka">
+              <PropertyRef Name="Tacka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KORISNIK_SUBJEKAT_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="KORISNIK_SUBJEKAT" Type="Self.KORISNIK_SUBJEKAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KORISNIK_SUBJEKAT">
+              <PropertyRef Name="ID_KORISNIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KORISNIK_SUBJEKAT_SUBJEKAT">
+          <End Role="SUBJEKAT" Type="Self.SUBJEKAT" Multiplicity="0..1" />
+          <End Role="KORISNIK_SUBJEKAT" Type="Self.KORISNIK_SUBJEKAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJEKAT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KORISNIK_SUBJEKAT">
+              <PropertyRef Name="ID_SUBJEKAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logovi_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Logovi" Type="Self.Logovi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Logovi">
+              <PropertyRef Name="korisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mail_SEDNICE">
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="0..1" />
+          <End Role="Mail" Type="Self.Mail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mail">
+              <PropertyRef Name="Sednica_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Masovna_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Masovna" Type="Self.Masovna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Masovna">
+              <PropertyRef Name="Prima" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Masovna_Masovna_poruka">
+          <End Role="Masovna_poruka" Type="Self.Masovna_poruka" Multiplicity="0..1" />
+          <End Role="Masovna" Type="Self.Masovna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Masovna_poruka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Masovna">
+              <PropertyRef Name="Poruka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasovniMail_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="MasovniMail" Type="Self.MasovniMail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MasovniMail">
+              <PropertyRef Name="Prima" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasovniMail_MasovniMail_Poruka">
+          <End Role="MasovniMail_Poruka" Type="Self.MasovniMail_Poruka" Multiplicity="0..1" />
+          <End Role="MasovniMail" Type="Self.MasovniMail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasovniMail_Poruka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MasovniMail">
+              <PropertyRef Name="Poruka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poruke_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Poruke" Type="Self.Poruke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Poruke">
+              <PropertyRef Name="Prima" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pozvani_Korisnici_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Pozvani_Korisnici" Type="Self.Pozvani_Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pozvani_Korisnici">
+              <PropertyRef Name="Korisnik_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pozvani_Korisnici_SEDNICE">
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="0..1" />
+          <End Role="Pozvani_Korisnici" Type="Self.Pozvani_Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pozvani_Korisnici">
+              <PropertyRef Name="Sednica_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pristup_Korisnik_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Pristup_Korisnik" Type="Self.Pristup_Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pristup_Korisnik">
+              <PropertyRef Name="Id_Korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEDNICE_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEDNICE">
+              <PropertyRef Name="Predsedava" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEDNICE_SUBJEKAT">
+          <End Role="SUBJEKAT" Type="Self.SUBJEKAT" Multiplicity="0..1" />
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJEKAT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEDNICE">
+              <PropertyRef Name="SUBJEKAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEDNICE_TIP_SEDNICE">
+          <End Role="TIP_SEDNICE" Type="Self.TIP_SEDNICE" Multiplicity="0..1" />
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEDNICE">
+              <PropertyRef Name="TIP_SEDNICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tacke_Dnevnog_Reda_DOKUMENTA">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="Tacke_Dnevnog_Reda" Type="Self.Tacke_Dnevnog_Reda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tacke_Dnevnog_Reda">
+              <PropertyRef Name="Dokument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tacke_Dnevnog_Reda_SEDNICE">
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="0..1" />
+          <End Role="Tacke_Dnevnog_Reda" Type="Self.Tacke_Dnevnog_Reda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tacke_Dnevnog_Reda">
+              <PropertyRef Name="Sednica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tacke_Dnevnog_Reda_SUBJEKAT">
+          <End Role="SUBJEKAT" Type="Self.SUBJEKAT" Multiplicity="0..1" />
+          <End Role="Tacke_Dnevnog_Reda" Type="Self.Tacke_Dnevnog_Reda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJEKAT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tacke_Dnevnog_Reda">
+              <PropertyRef Name="predlagac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZakljucakAmandman_Amandman">
+          <End Role="Amandman" Type="Self.Amandman" Multiplicity="0..1" />
+          <End Role="ZakljucakAmandman" Type="Self.ZakljucakAmandman" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Amandman">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ZakljucakAmandman">
+              <PropertyRef Name="Amandman" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapisnik_SEDNICE">
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="0..1" />
+          <End Role="Zapisnik" Type="Self.Zapisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zapisnik">
+              <PropertyRef Name="Broj_sednice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="E_Sednice_Indjija_newModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Amandman" EntityType="Self.Amandman" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AmandmanDok_pomocna" EntityType="Self.AmandmanDok_pomocna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Amandmani_pomocna" EntityType="Self.Amandmani_pomocna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOKUMENTA" EntityType="Self.DOKUMENTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dokumenta_Subjekat" EntityType="Self.Dokumenta_Subjekat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hitan_Postupak" EntityType="Self.Hitan_Postupak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Izmene_DnReda" EntityType="Self.Izmene_DnReda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klase_dnevnog_reda" EntityType="Self.Klase_dnevnog_reda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Komentar" EntityType="Self.Komentar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Komentar_Tacka" EntityType="Self.Komentar_Tacka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KORISNIK" EntityType="Self.KORISNIK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KORISNIK_SUBJEKAT" EntityType="Self.KORISNIK_SUBJEKAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logovi" EntityType="Self.Logovi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Masovna" EntityType="Self.Masovna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Masovna_poruka" EntityType="Self.Masovna_poruka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasovniMail" EntityType="Self.MasovniMail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasovniMail_Poruka" EntityType="Self.MasovniMail_Poruka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poruke" EntityType="Self.Poruke" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pozvani_Korisnici" EntityType="Self.Pozvani_Korisnici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pristup_Korisnik" EntityType="Self.Pristup_Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEDNICE" EntityType="Self.SEDNICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATUS_AKATA" EntityType="Self.STATUS_AKATA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status_dokumenta" EntityType="Self.Status_dokumenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUBJEKAT" EntityType="Self.SUBJEKAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tacke_Dnevnog_Reda" EntityType="Self.Tacke_Dnevnog_Reda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIP_SEDNICE" EntityType="Self.TIP_SEDNICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZakljucakAmandman" EntityType="Self.ZakljucakAmandman" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zapisnik" EntityType="Self.Zapisnik" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Amandman_DOKUMENTA" Association="Self.FK_Amandman_DOKUMENTA">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTA" />
+            <End Role="Amandman" EntitySet="Amandman" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Amandman_KORISNIK" Association="Self.FK_Amandman_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="Amandman" EntitySet="Amandman" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AmandmanDok_pomocna_DOKUMENTA" Association="Self.FK_AmandmanDok_pomocna_DOKUMENTA">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTA" />
+            <End Role="AmandmanDok_pomocna" EntitySet="AmandmanDok_pomocna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Amandmani_pomocna_KORISNIK" Association="Self.FK_Amandmani_pomocna_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="Amandmani_pomocna" EntitySet="Amandmani_pomocna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOKUMENTA_Status_dokumenta" Association="Self.FK_DOKUMENTA_Status_dokumenta">
+            <End Role="Status_dokumenta" EntitySet="Status_dokumenta" />
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokumenta_Subjekat_DOKUMENTA" Association="Self.FK_Dokumenta_Subjekat_DOKUMENTA">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTA" />
+            <End Role="Dokumenta_Subjekat" EntitySet="Dokumenta_Subjekat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokumenta_Subjekat_DOKUMENTA1" Association="Self.FK_Dokumenta_Subjekat_DOKUMENTA1">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTA" />
+            <End Role="Dokumenta_Subjekat" EntitySet="Dokumenta_Subjekat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokumenta_Subjekat_SUBJEKAT" Association="Self.FK_Dokumenta_Subjekat_SUBJEKAT">
+            <End Role="SUBJEKAT" EntitySet="SUBJEKAT" />
+            <End Role="Dokumenta_Subjekat" EntitySet="Dokumenta_Subjekat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hitan_Postupak_KORISNIK" Association="Self.FK_Hitan_Postupak_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="Hitan_Postupak" EntitySet="Hitan_Postupak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izmene_DnReda_KORISNIK" Association="Self.FK_Izmene_DnReda_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="Izmene_DnReda" EntitySet="Izmene_DnReda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izmene_DnReda_SEDNICE" Association="Self.FK_Izmene_DnReda_SEDNICE">
+            <End Role="SEDNICE" EntitySet="SEDNICE" />
+            <End Role="Izmene_DnReda" EntitySet="Izmene_DnReda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Komentar_DOKUMENTA" Association="Self.FK_Komentar_DOKUMENTA">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTA" />
+            <End Role="Komentar" EntitySet="Komentar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Komentar_Tacka_Tacke_Dnevnog_Reda" Association="Self.FK_Komentar_Tacka_Tacke_Dnevnog_Reda">
+            <End Role="Tacke_Dnevnog_Reda" EntitySet="Tacke_Dnevnog_Reda" />
+            <End Role="Komentar_Tacka" EntitySet="Komentar_Tacka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KORISNIK_SUBJEKAT_KORISNIK" Association="Self.FK_KORISNIK_SUBJEKAT_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="KORISNIK_SUBJEKAT" EntitySet="KORISNIK_SUBJEKAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KORISNIK_SUBJEKAT_SUBJEKAT" Association="Self.FK_KORISNIK_SUBJEKAT_SUBJEKAT">
+            <End Role="SUBJEKAT" EntitySet="SUBJEKAT" />
+            <End Role="KORISNIK_SUBJEKAT" EntitySet="KORISNIK_SUBJEKAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logovi_KORISNIK" Association="Self.FK_Logovi_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="Logovi" EntitySet="Logovi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mail_SEDNICE" Association="Self.FK_Mail_SEDNICE">
+            <End Role="SEDNICE" EntitySet="SEDNICE" />
+            <End Role="Mail" EntitySet="Mail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Masovna_KORISNIK" Association="Self.FK_Masovna_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="Masovna" EntitySet="Masovna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Masovna_Masovna_poruka" Association="Self.FK_Masovna_Masovna_poruka">
+            <End Role="Masovna_poruka" EntitySet="Masovna_poruka" />
+            <End Role="Masovna" EntitySet="Masovna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasovniMail_KORISNIK" Association="Self.FK_MasovniMail_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="MasovniMail" EntitySet="MasovniMail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasovniMail_MasovniMail_Poruka" Association="Self.FK_MasovniMail_MasovniMail_Poruka">
+            <End Role="MasovniMail_Poruka" EntitySet="MasovniMail_Poruka" />
+            <End Role="MasovniMail" EntitySet="MasovniMail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poruke_KORISNIK" Association="Self.FK_Poruke_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="Poruke" EntitySet="Poruke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pozvani_Korisnici_KORISNIK" Association="Self.FK_Pozvani_Korisnici_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="Pozvani_Korisnici" EntitySet="Pozvani_Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pozvani_Korisnici_SEDNICE" Association="Self.FK_Pozvani_Korisnici_SEDNICE">
+            <End Role="SEDNICE" EntitySet="SEDNICE" />
+            <End Role="Pozvani_Korisnici" EntitySet="Pozvani_Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pristup_Korisnik_KORISNIK" Association="Self.FK_Pristup_Korisnik_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="Pristup_Korisnik" EntitySet="Pristup_Korisnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEDNICE_KORISNIK" Association="Self.FK_SEDNICE_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIK" />
+            <End Role="SEDNICE" EntitySet="SEDNICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEDNICE_SUBJEKAT" Association="Self.FK_SEDNICE_SUBJEKAT">
+            <End Role="SUBJEKAT" EntitySet="SUBJEKAT" />
+            <End Role="SEDNICE" EntitySet="SEDNICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEDNICE_TIP_SEDNICE" Association="Self.FK_SEDNICE_TIP_SEDNICE">
+            <End Role="TIP_SEDNICE" EntitySet="TIP_SEDNICE" />
+            <End Role="SEDNICE" EntitySet="SEDNICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tacke_Dnevnog_Reda_DOKUMENTA" Association="Self.FK_Tacke_Dnevnog_Reda_DOKUMENTA">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTA" />
+            <End Role="Tacke_Dnevnog_Reda" EntitySet="Tacke_Dnevnog_Reda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tacke_Dnevnog_Reda_SEDNICE" Association="Self.FK_Tacke_Dnevnog_Reda_SEDNICE">
+            <End Role="SEDNICE" EntitySet="SEDNICE" />
+            <End Role="Tacke_Dnevnog_Reda" EntitySet="Tacke_Dnevnog_Reda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tacke_Dnevnog_Reda_SUBJEKAT" Association="Self.FK_Tacke_Dnevnog_Reda_SUBJEKAT">
+            <End Role="SUBJEKAT" EntitySet="SUBJEKAT" />
+            <End Role="Tacke_Dnevnog_Reda" EntitySet="Tacke_Dnevnog_Reda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZakljucakAmandman_Amandman" Association="Self.FK_ZakljucakAmandman_Amandman">
+            <End Role="Amandman" EntitySet="Amandman" />
+            <End Role="ZakljucakAmandman" EntitySet="ZakljucakAmandman" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapisnik_SEDNICE" Association="Self.FK_Zapisnik_SEDNICE">
+            <End Role="SEDNICE" EntitySet="SEDNICE" />
+            <End Role="Zapisnik" EntitySet="Zapisnik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="E_Sednice_Indjija_newModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Amandman">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="Postavio" Type="Int32" />
+          <Property Name="Tekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Odnosi_se" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Obrazlozenje" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dokument" Type="Int32" />
+          <Property Name="Blagovremen" Type="Boolean" />
+          <Property Name="odustao" Type="Boolean" />
+          <Property Name="vreme_odustao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DOKUMENTA" Relationship="Self.FK_Amandman_DOKUMENTA" FromRole="Amandman" ToRole="DOKUMENTA" />
+          <NavigationProperty Name="KORISNIK" Relationship="Self.FK_Amandman_KORISNIK" FromRole="Amandman" ToRole="KORISNIK" />
+          <NavigationProperty Name="ZakljucakAmandmen" Relationship="Self.FK_ZakljucakAmandman_Amandman" FromRole="Amandman" ToRole="ZakljucakAmandman" />
+        </EntityType>
+        <EntityType Name="AmandmanDok_pomocna">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amandman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dokument" Type="Int32" />
+          <Property Name="KorisniKU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DOKUMENTA" Relationship="Self.FK_AmandmanDok_pomocna_DOKUMENTA" FromRole="AmandmanDok_pomocna" ToRole="DOKUMENTA" />
+        </EntityType>
+        <EntityType Name="Amandmani_pomocna">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amandman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dnevni_Red" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Odbornik" Type="Int32" />
+          <Property Name="KorisnikU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KORISNIK" Relationship="Self.FK_Amandmani_pomocna_KORISNIK" FromRole="Amandmani_pomocna" ToRole="KORISNIK" />
+        </EntityType>
+        <EntityType Name="DOKUMENTA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAZIV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BROJ" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DATUM_USVAJANJA" Type="DateTime" Precision="3" />
+          <Property Name="POSTAVIO" Type="Int32" />
+          <Property Name="TEKST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LINK" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="LINK_ZAVRSEN" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Int32" />
+          <Property Name="DATUM_POCETKA_PRIMENE" Type="DateTime" Precision="3" />
+          <Property Name="Osnovni_dokument" Type="Boolean" />
+          <Property Name="ID_Osnovnog_Dokumenta" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Amandmen" Relationship="Self.FK_Amandman_DOKUMENTA" FromRole="DOKUMENTA" ToRole="Amandman" />
+          <NavigationProperty Name="AmandmanDok_pomocna" Relationship="Self.FK_AmandmanDok_pomocna_DOKUMENTA" FromRole="DOKUMENTA" ToRole="AmandmanDok_pomocna" />
+          <NavigationProperty Name="Status_dokumenta" Relationship="Self.FK_DOKUMENTA_Status_dokumenta" FromRole="DOKUMENTA" ToRole="Status_dokumenta" />
+          <NavigationProperty Name="Dokumenta_Subjekat" Relationship="Self.FK_Dokumenta_Subjekat_DOKUMENTA" FromRole="DOKUMENTA" ToRole="Dokumenta_Subjekat" />
+          <NavigationProperty Name="Dokumenta_Subjekat1" Relationship="Self.FK_Dokumenta_Subjekat_DOKUMENTA1" FromRole="DOKUMENTA" ToRole="Dokumenta_Subjekat" />
+          <NavigationProperty Name="Komentars" Relationship="Self.FK_Komentar_DOKUMENTA" FromRole="DOKUMENTA" ToRole="Komentar" />
+          <NavigationProperty Name="Tacke_Dnevnog_Reda" Relationship="Self.FK_Tacke_Dnevnog_Reda_DOKUMENTA" FromRole="DOKUMENTA" ToRole="Tacke_Dnevnog_Reda" />
+        </EntityType>
+        <EntityType Name="Dokumenta_Subjekat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_DOKUMENTA" Type="Int32" />
+          <Property Name="ID_SUBJEKAT" Type="Int32" />
+          <Property Name="KORAK_ZAVRSEN" Type="Boolean" />
+          <Property Name="REDNI_BROJ" Type="Int32" />
+          <Property Name="Postavio_korisnik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Vreme" Type="DateTime" Precision="0" />
+          <Property Name="Brojac" Type="Int32" />
+          <Property Name="ID_Verzija_Dokumenta" Type="Int32" />
+          <NavigationProperty Name="DOKUMENTA" Relationship="Self.FK_Dokumenta_Subjekat_DOKUMENTA" FromRole="Dokumenta_Subjekat" ToRole="DOKUMENTA" />
+          <NavigationProperty Name="DOKUMENTA1" Relationship="Self.FK_Dokumenta_Subjekat_DOKUMENTA1" FromRole="Dokumenta_Subjekat" ToRole="DOKUMENTA" />
+          <NavigationProperty Name="SUBJEKAT" Relationship="Self.FK_Dokumenta_Subjekat_SUBJEKAT" FromRole="Dokumenta_Subjekat" ToRole="SUBJEKAT" />
+        </EntityType>
+        <EntityType Name="Hitan_Postupak">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Korisnik" Type="Int32" />
+          <Property Name="Tekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="Sednice" Type="Int32" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Naziv" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KORISNIK1" Relationship="Self.FK_Hitan_Postupak_KORISNIK" FromRole="Hitan_Postupak" ToRole="KORISNIK" />
+        </EntityType>
+        <EntityType Name="Izmene_DnReda">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sednica" Type="Int32" />
+          <Property Name="Korisnik" Type="Int32" />
+          <Property Name="Tekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="blagovremena" Type="Boolean" />
+          <Property Name="tacka" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Naziv" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KORISNIK1" Relationship="Self.FK_Izmene_DnReda_KORISNIK" FromRole="Izmene_DnReda" ToRole="KORISNIK" />
+          <NavigationProperty Name="SEDNICE" Relationship="Self.FK_Izmene_DnReda_SEDNICE" FromRole="Izmene_DnReda" ToRole="SEDNICE" />
+        </EntityType>
+        <EntityType Name="Klase_dnevnog_reda">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Klase" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AKTIVAN" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Komentar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Komentar1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Postavio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Vreme" Type="DateTime" Precision="0" />
+          <Property Name="Dokument" Type="Int32" />
+          <Property Name="Odnosi_Se" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DOKUMENTA" Relationship="Self.FK_Komentar_DOKUMENTA" FromRole="Komentar" ToRole="DOKUMENTA" />
+        </EntityType>
+        <EntityType Name="Komentar_Tacka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Komentar" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Postavio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Vreme" Type="DateTime" Precision="3" />
+          <Property Name="Tacka" Type="Int32" />
+          <NavigationProperty Name="Tacke_Dnevnog_Reda" Relationship="Self.FK_Komentar_Tacka_Tacke_Dnevnog_Reda" FromRole="Komentar_Tacka" ToRole="Tacke_Dnevnog_Reda" />
+        </EntityType>
+        <EntityType Name="KORISNIK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PREZIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="JMBG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FUNKCIJA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LOZINKA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MOBILNI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Aktivan" Type="Boolean" />
+          <Property Name="Potrebna_potvrda" Type="Int32" />
+          <Property Name="admin" Type="Boolean" />
+          <Property Name="sluzbeno" Type="Boolean" />
+          <NavigationProperty Name="Amandmen" Relationship="Self.FK_Amandman_KORISNIK" FromRole="KORISNIK" ToRole="Amandman" />
+          <NavigationProperty Name="Amandmani_pomocna" Relationship="Self.FK_Amandmani_pomocna_KORISNIK" FromRole="KORISNIK" ToRole="Amandmani_pomocna" />
+          <NavigationProperty Name="Hitan_Postupak" Relationship="Self.FK_Hitan_Postupak_KORISNIK" FromRole="KORISNIK" ToRole="Hitan_Postupak" />
+          <NavigationProperty Name="Izmene_DnReda" Relationship="Self.FK_Izmene_DnReda_KORISNIK" FromRole="KORISNIK" ToRole="Izmene_DnReda" />
+          <NavigationProperty Name="KORISNIK_SUBJEKAT" Relationship="Self.FK_KORISNIK_SUBJEKAT_KORISNIK" FromRole="KORISNIK" ToRole="KORISNIK_SUBJEKAT" />
+          <NavigationProperty Name="Logovis" Relationship="Self.FK_Logovi_KORISNIK" FromRole="KORISNIK" ToRole="Logovi" />
+          <NavigationProperty Name="Masovnas" Relationship="Self.FK_Masovna_KORISNIK" FromRole="KORISNIK" ToRole="Masovna" />
+          <NavigationProperty Name="MasovniMails" Relationship="Self.FK_MasovniMail_KORISNIK" FromRole="KORISNIK" ToRole="MasovniMail" />
+          <NavigationProperty Name="Porukes" Relationship="Self.FK_Poruke_KORISNIK" FromRole="KORISNIK" ToRole="Poruke" />
+          <NavigationProperty Name="Pozvani_Korisnici" Relationship="Self.FK_Pozvani_Korisnici_KORISNIK" FromRole="KORISNIK" ToRole="Pozvani_Korisnici" />
+          <NavigationProperty Name="Pristup_Korisnik" Relationship="Self.FK_Pristup_Korisnik_KORISNIK" FromRole="KORISNIK" ToRole="Pristup_Korisnik" />
+          <NavigationProperty Name="SEDNICEs" Relationship="Self.FK_SEDNICE_KORISNIK" FromRole="KORISNIK" ToRole="SEDNICE" />
+        </EntityType>
+        <EntityType Name="KORISNIK_SUBJEKAT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_SUBJEKAT" Type="Int32" />
+          <Property Name="ID_KORISNIK" Type="Int32" />
+          <Property Name="PRIPADA_GRUPI" Type="Boolean" />
+          <Property Name="DATUM" Type="DateTime" Precision="0" />
+          <Property Name="Prva" Type="Boolean" />
+          <NavigationProperty Name="KORISNIK" Relationship="Self.FK_KORISNIK_SUBJEKAT_KORISNIK" FromRole="KORISNIK_SUBJEKAT" ToRole="KORISNIK" />
+          <NavigationProperty Name="SUBJEKAT" Relationship="Self.FK_KORISNIK_SUBJEKAT_SUBJEKAT" FromRole="KORISNIK_SUBJEKAT" ToRole="SUBJEKAT" />
+        </EntityType>
+        <EntityType Name="Logovi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vreme" Type="DateTime" Precision="3" />
+          <Property Name="korisnikID" Type="Int32" />
+          <NavigationProperty Name="KORISNIK" Relationship="Self.FK_Logovi_KORISNIK" FromRole="Logovi" ToRole="KORISNIK" />
+        </EntityType>
+        <EntityType Name="Mail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sednica_ID" Type="Int32" />
+          <Property Name="Mailovi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="SEDNICE" Relationship="Self.FK_Mail_SEDNICE" FromRole="Mail" ToRole="SEDNICE" />
+        </EntityType>
+        <EntityType Name="Masovna">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Poruka" Type="Int32" />
+          <Property Name="Prima" Type="Int32" />
+          <NavigationProperty Name="KORISNIK" Relationship="Self.FK_Masovna_KORISNIK" FromRole="Masovna" ToRole="KORISNIK" />
+          <NavigationProperty Name="Masovna_poruka" Relationship="Self.FK_Masovna_Masovna_poruka" FromRole="Masovna" ToRole="Masovna_poruka" />
+        </EntityType>
+        <EntityType Name="Masovna_poruka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tekst" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Vreme" Type="DateTime" Precision="3" />
+          <Property Name="Poslat" Type="Boolean" />
+          <Property Name="Salje" Type="Int32" />
+          <NavigationProperty Name="Masovnas" Relationship="Self.FK_Masovna_Masovna_poruka" FromRole="Masovna_poruka" ToRole="Masovna" />
+        </EntityType>
+        <EntityType Name="MasovniMail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Poruka" Type="Int32" />
+          <Property Name="Prima" Type="Int32" />
+          <NavigationProperty Name="KORISNIK" Relationship="Self.FK_MasovniMail_KORISNIK" FromRole="MasovniMail" ToRole="KORISNIK" />
+          <NavigationProperty Name="MasovniMail_Poruka" Relationship="Self.FK_MasovniMail_MasovniMail_Poruka" FromRole="MasovniMail" ToRole="MasovniMail_Poruka" />
+        </EntityType>
+        <EntityType Name="MasovniMail_Poruka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tekst" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Vreme" Type="DateTime" Precision="3" />
+          <Property Name="Poslat" Type="Boolean" />
+          <Property Name="Salje" Type="Int32" />
+          <NavigationProperty Name="MasovniMails" Relationship="Self.FK_MasovniMail_MasovniMail_Poruka" FromRole="MasovniMail_Poruka" ToRole="MasovniMail" />
+        </EntityType>
+        <EntityType Name="Poruke">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salje" Type="Int32" />
+          <Property Name="Tekst" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Prima" Type="Int32" />
+          <Property Name="procitana" Type="Boolean" />
+          <Property Name="Vreme" Type="DateTime" Precision="3" />
+          <Property Name="slanje" Type="Int32" />
+          <NavigationProperty Name="KORISNIK" Relationship="Self.FK_Poruke_KORISNIK" FromRole="Poruke" ToRole="KORISNIK" />
+        </EntityType>
+        <EntityType Name="Pozvani_Korisnici">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Korisnik_ID" Type="Int32" />
+          <Property Name="Sednica_ID" Type="Int32" />
+          <Property Name="Potvrdio" Type="Boolean" />
+          <Property Name="Vreme_potvrde" Type="DateTime" Precision="3" />
+          <Property Name="Mail" Type="Boolean" />
+          <Property Name="SMS" Type="Boolean" />
+          <Property Name="Komentar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Prisustvuje" Type="Boolean" />
+          <Property Name="Prikaz" Type="Boolean" />
+          <Property Name="Datum_SMS" Type="DateTime" Precision="3" />
+          <Property Name="Datum_Mail" Type="DateTime" Precision="3" />
+          <Property Name="Vreme_Pozvan" Type="DateTime" Precision="3" />
+          <Property Name="Sistem" Type="Boolean" />
+          <NavigationProperty Name="KORISNIK" Relationship="Self.FK_Pozvani_Korisnici_KORISNIK" FromRole="Pozvani_Korisnici" ToRole="KORISNIK" />
+          <NavigationProperty Name="SEDNICE" Relationship="Self.FK_Pozvani_Korisnici_SEDNICE" FromRole="Pozvani_Korisnici" ToRole="SEDNICE" />
+        </EntityType>
+        <EntityType Name="Pristup_Korisnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Korisnik" Type="Int32" />
+          <Property Name="Sednice" Type="Int32" />
+          <Property Name="Zapisnik" Type="Int32" />
+          <Property Name="Dokumenta" Type="Int32" />
+          <Property Name="Clanovi" Type="Int32" />
+          <Property Name="Lozinka" Type="Int32" />
+          <Property Name="Organ" Type="Int32" />
+          <Property Name="Statusi" Type="Int32" />
+          <Property Name="Pozivanje" Type="Int32" />
+          <Property Name="Amandmani" Type="Int32" />
+          <Property Name="Dnevni_red" Type="Int32" />
+          <Property Name="IzmenaDnRedaPosle24Sata" Type="Boolean" />
+          <Property Name="Komentari" Type="Boolean" />
+          <NavigationProperty Name="KORISNIK" Relationship="Self.FK_Pristup_Korisnik_KORISNIK" FromRole="Pristup_Korisnik" ToRole="KORISNIK" />
+        </EntityType>
+        <EntityType Name="SEDNICE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BROJ" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SUBJEKAT" Type="Int32" />
+          <Property Name="DATUM" Type="DateTime" Precision="3" />
+          <Property Name="Vreme_sat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Vreme_minut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_time" Type="DateTime" Precision="0" />
+          <Property Name="TIP_SEDNICE" Type="Int32" />
+          <Property Name="Predsedava" Type="Int32" />
+          <Property Name="Zavrsena" Type="Boolean" Nullable="false" />
+          <Property Name="Brojac" Type="Int32" />
+          <Property Name="datum_pretraga" Type="DateTime" Precision="0" />
+          <Property Name="zavodni_broj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mesto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="na_osnovu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Izmene_DnReda" Relationship="Self.FK_Izmene_DnReda_SEDNICE" FromRole="SEDNICE" ToRole="Izmene_DnReda" />
+          <NavigationProperty Name="KORISNIK" Relationship="Self.FK_SEDNICE_KORISNIK" FromRole="SEDNICE" ToRole="KORISNIK" />
+          <NavigationProperty Name="Mails" Relationship="Self.FK_Mail_SEDNICE" FromRole="SEDNICE" ToRole="Mail" />
+          <NavigationProperty Name="Pozvani_Korisnici" Relationship="Self.FK_Pozvani_Korisnici_SEDNICE" FromRole="SEDNICE" ToRole="Pozvani_Korisnici" />
+          <NavigationProperty Name="SUBJEKAT1" Relationship="Self.FK_SEDNICE_SUBJEKAT" FromRole="SEDNICE" ToRole="SUBJEKAT" />
+          <NavigationProperty Name="TIP_SEDNICE1" Relationship="Self.FK_SEDNICE_TIP_SEDNICE" FromRole="SEDNICE" ToRole="TIP_SEDNICE" />
+          <NavigationProperty Name="Tacke_Dnevnog_Reda" Relationship="Self.FK_Tacke_Dnevnog_Reda_SEDNICE" FromRole="SEDNICE" ToRole="Tacke_Dnevnog_Reda" />
+          <NavigationProperty Name="Zapisniks" Relationship="Self.FK_Zapisnik_SEDNICE" FromRole="SEDNICE" ToRole="Zapisnik" />
+        </EntityType>
+        <EntityType Name="STATUS_AKATA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AKTIVAN" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Status_dokumenta">
+          <Key>
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DOKUMENTAs" Relationship="Self.FK_DOKUMENTA_Status_dokumenta" FromRole="Status_dokumenta" ToRole="DOKUMENTA" />
+        </EntityType>
+        <EntityType Name="SUBJEKAT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAZIV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KOMENTAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AKTIVAN" Type="Boolean" />
+          <Property Name="Predlagac" Type="Boolean" />
+          <NavigationProperty Name="Dokumenta_Subjekat" Relationship="Self.FK_Dokumenta_Subjekat_SUBJEKAT" FromRole="SUBJEKAT" ToRole="Dokumenta_Subjekat" />
+          <NavigationProperty Name="KORISNIK_SUBJEKAT" Relationship="Self.FK_KORISNIK_SUBJEKAT_SUBJEKAT" FromRole="SUBJEKAT" ToRole="KORISNIK_SUBJEKAT" />
+          <NavigationProperty Name="SEDNICEs" Relationship="Self.FK_SEDNICE_SUBJEKAT" FromRole="SUBJEKAT" ToRole="SEDNICE" />
+          <NavigationProperty Name="Tacke_Dnevnog_Reda" Relationship="Self.FK_Tacke_Dnevnog_Reda_SUBJEKAT" FromRole="SUBJEKAT" ToRole="Tacke_Dnevnog_Reda" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tacke_Dnevnog_Reda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv_tacke" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Dokument" Type="Int32" />
+          <Property Name="Sednica" Type="Int32" />
+          <Property Name="Redni_broj" Type="Int32" />
+          <Property Name="Verzija" Type="Boolean" />
+          <Property Name="Link_Dokumenta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="prva" Type="Boolean" />
+          <Property Name="hitna" Type="Boolean" />
+          <Property Name="predlagac" Type="Int32" />
+          <NavigationProperty Name="DOKUMENTA" Relationship="Self.FK_Tacke_Dnevnog_Reda_DOKUMENTA" FromRole="Tacke_Dnevnog_Reda" ToRole="DOKUMENTA" />
+          <NavigationProperty Name="Komentar_Tacka" Relationship="Self.FK_Komentar_Tacka_Tacke_Dnevnog_Reda" FromRole="Tacke_Dnevnog_Reda" ToRole="Komentar_Tacka" />
+          <NavigationProperty Name="SEDNICE" Relationship="Self.FK_Tacke_Dnevnog_Reda_SEDNICE" FromRole="Tacke_Dnevnog_Reda" ToRole="SEDNICE" />
+          <NavigationProperty Name="SUBJEKAT" Relationship="Self.FK_Tacke_Dnevnog_Reda_SUBJEKAT" FromRole="Tacke_Dnevnog_Reda" ToRole="SUBJEKAT" />
+        </EntityType>
+        <EntityType Name="TIP_SEDNICE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OPIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SEDNICEs" Relationship="Self.FK_SEDNICE_TIP_SEDNICE" FromRole="TIP_SEDNICE" ToRole="SEDNICE" />
+        </EntityType>
+        <EntityType Name="ZakljucakAmandman">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amandman" Type="Int32" />
+          <Property Name="Tekst" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="KorisnikU" Type="Int32" />
+          <Property Name="Vreme" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Amandman1" Relationship="Self.FK_ZakljucakAmandman_Amandman" FromRole="ZakljucakAmandman" ToRole="Amandman" />
+        </EntityType>
+        <EntityType Name="Zapisnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Zapisnik1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Audio_zapis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Broj_sednice" Type="Int32" />
+          <NavigationProperty Name="SEDNICE" Relationship="Self.FK_Zapisnik_SEDNICE" FromRole="Zapisnik" ToRole="SEDNICE" />
+        </EntityType>
+        <Association Name="FK_Amandman_DOKUMENTA">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="Amandman" Type="Self.Amandman" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Amandman">
+              <PropertyRef Name="Dokument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Amandman_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Amandman" Type="Self.Amandman" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Amandman">
+              <PropertyRef Name="Postavio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZakljucakAmandman_Amandman">
+          <End Role="Amandman" Type="Self.Amandman" Multiplicity="0..1" />
+          <End Role="ZakljucakAmandman" Type="Self.ZakljucakAmandman" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Amandman">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ZakljucakAmandman">
+              <PropertyRef Name="Amandman" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AmandmanDok_pomocna_DOKUMENTA">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="AmandmanDok_pomocna" Type="Self.AmandmanDok_pomocna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AmandmanDok_pomocna">
+              <PropertyRef Name="Dokument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Amandmani_pomocna_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Amandmani_pomocna" Type="Self.Amandmani_pomocna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Amandmani_pomocna">
+              <PropertyRef Name="Odbornik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOKUMENTA_Status_dokumenta">
+          <End Role="Status_dokumenta" Type="Self.Status_dokumenta" Multiplicity="0..1" />
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_dokumenta">
+              <PropertyRef Name="Status" />
+            </Principal>
+            <Dependent Role="DOKUMENTA">
+              <PropertyRef Name="STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokumenta_Subjekat_DOKUMENTA">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="Dokumenta_Subjekat" Type="Self.Dokumenta_Subjekat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dokumenta_Subjekat">
+              <PropertyRef Name="ID_DOKUMENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokumenta_Subjekat_DOKUMENTA1">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="Dokumenta_Subjekat" Type="Self.Dokumenta_Subjekat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dokumenta_Subjekat">
+              <PropertyRef Name="ID_Verzija_Dokumenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Komentar_DOKUMENTA">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="Komentar" Type="Self.Komentar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Komentar">
+              <PropertyRef Name="Dokument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tacke_Dnevnog_Reda_DOKUMENTA">
+          <End Role="DOKUMENTA" Type="Self.DOKUMENTA" Multiplicity="0..1" />
+          <End Role="Tacke_Dnevnog_Reda" Type="Self.Tacke_Dnevnog_Reda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOKUMENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tacke_Dnevnog_Reda">
+              <PropertyRef Name="Dokument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokumenta_Subjekat_SUBJEKAT">
+          <End Role="SUBJEKAT" Type="Self.SUBJEKAT" Multiplicity="0..1" />
+          <End Role="Dokumenta_Subjekat" Type="Self.Dokumenta_Subjekat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJEKAT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dokumenta_Subjekat">
+              <PropertyRef Name="ID_SUBJEKAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hitan_Postupak_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Hitan_Postupak" Type="Self.Hitan_Postupak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hitan_Postupak">
+              <PropertyRef Name="Korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izmene_DnReda_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Izmene_DnReda" Type="Self.Izmene_DnReda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Izmene_DnReda">
+              <PropertyRef Name="Korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izmene_DnReda_SEDNICE">
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="0..1" />
+          <End Role="Izmene_DnReda" Type="Self.Izmene_DnReda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Izmene_DnReda">
+              <PropertyRef Name="Sednica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Komentar_Tacka_Tacke_Dnevnog_Reda">
+          <End Role="Tacke_Dnevnog_Reda" Type="Self.Tacke_Dnevnog_Reda" Multiplicity="0..1" />
+          <End Role="Komentar_Tacka" Type="Self.Komentar_Tacka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tacke_Dnevnog_Reda">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Komentar_Tacka">
+              <PropertyRef Name="Tacka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KORISNIK_SUBJEKAT_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="KORISNIK_SUBJEKAT" Type="Self.KORISNIK_SUBJEKAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KORISNIK_SUBJEKAT">
+              <PropertyRef Name="ID_KORISNIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logovi_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Logovi" Type="Self.Logovi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Logovi">
+              <PropertyRef Name="korisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Masovna_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Masovna" Type="Self.Masovna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Masovna">
+              <PropertyRef Name="Prima" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasovniMail_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="MasovniMail" Type="Self.MasovniMail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MasovniMail">
+              <PropertyRef Name="Prima" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poruke_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Poruke" Type="Self.Poruke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Poruke">
+              <PropertyRef Name="Prima" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pozvani_Korisnici_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Pozvani_Korisnici" Type="Self.Pozvani_Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pozvani_Korisnici">
+              <PropertyRef Name="Korisnik_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pristup_Korisnik_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="Pristup_Korisnik" Type="Self.Pristup_Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pristup_Korisnik">
+              <PropertyRef Name="Id_Korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEDNICE_KORISNIK">
+          <End Role="KORISNIK" Type="Self.KORISNIK" Multiplicity="0..1" />
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KORISNIK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEDNICE">
+              <PropertyRef Name="Predsedava" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KORISNIK_SUBJEKAT_SUBJEKAT">
+          <End Role="SUBJEKAT" Type="Self.SUBJEKAT" Multiplicity="0..1" />
+          <End Role="KORISNIK_SUBJEKAT" Type="Self.KORISNIK_SUBJEKAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJEKAT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KORISNIK_SUBJEKAT">
+              <PropertyRef Name="ID_SUBJEKAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mail_SEDNICE">
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="0..1" />
+          <End Role="Mail" Type="Self.Mail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mail">
+              <PropertyRef Name="Sednica_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Masovna_Masovna_poruka">
+          <End Role="Masovna_poruka" Type="Self.Masovna_poruka" Multiplicity="0..1" />
+          <End Role="Masovna" Type="Self.Masovna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Masovna_poruka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Masovna">
+              <PropertyRef Name="Poruka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasovniMail_MasovniMail_Poruka">
+          <End Role="MasovniMail_Poruka" Type="Self.MasovniMail_Poruka" Multiplicity="0..1" />
+          <End Role="MasovniMail" Type="Self.MasovniMail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasovniMail_Poruka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MasovniMail">
+              <PropertyRef Name="Poruka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pozvani_Korisnici_SEDNICE">
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="0..1" />
+          <End Role="Pozvani_Korisnici" Type="Self.Pozvani_Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pozvani_Korisnici">
+              <PropertyRef Name="Sednica_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEDNICE_SUBJEKAT">
+          <End Role="SUBJEKAT" Type="Self.SUBJEKAT" Multiplicity="0..1" />
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJEKAT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEDNICE">
+              <PropertyRef Name="SUBJEKAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEDNICE_TIP_SEDNICE">
+          <End Role="TIP_SEDNICE" Type="Self.TIP_SEDNICE" Multiplicity="0..1" />
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEDNICE">
+              <PropertyRef Name="TIP_SEDNICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tacke_Dnevnog_Reda_SEDNICE">
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="0..1" />
+          <End Role="Tacke_Dnevnog_Reda" Type="Self.Tacke_Dnevnog_Reda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tacke_Dnevnog_Reda">
+              <PropertyRef Name="Sednica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapisnik_SEDNICE">
+          <End Role="SEDNICE" Type="Self.SEDNICE" Multiplicity="0..1" />
+          <End Role="Zapisnik" Type="Self.Zapisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEDNICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zapisnik">
+              <PropertyRef Name="Broj_sednice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tacke_Dnevnog_Reda_SUBJEKAT">
+          <End Role="SUBJEKAT" Type="Self.SUBJEKAT" Multiplicity="0..1" />
+          <End Role="Tacke_Dnevnog_Reda" Type="Self.Tacke_Dnevnog_Reda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJEKAT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tacke_Dnevnog_Reda">
+              <PropertyRef Name="predlagac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="E_Sednice_Indjija_newEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Amandmen" EntityType="Self.Amandman" />
+          <EntitySet Name="AmandmanDok_pomocna" EntityType="Self.AmandmanDok_pomocna" />
+          <EntitySet Name="Amandmani_pomocna" EntityType="Self.Amandmani_pomocna" />
+          <EntitySet Name="DOKUMENTAs" EntityType="Self.DOKUMENTA" />
+          <EntitySet Name="Dokumenta_Subjekat" EntityType="Self.Dokumenta_Subjekat" />
+          <EntitySet Name="Hitan_Postupak" EntityType="Self.Hitan_Postupak" />
+          <EntitySet Name="Izmene_DnReda" EntityType="Self.Izmene_DnReda" />
+          <EntitySet Name="Klase_dnevnog_reda" EntityType="Self.Klase_dnevnog_reda" />
+          <EntitySet Name="Komentars" EntityType="Self.Komentar" />
+          <EntitySet Name="Komentar_Tacka" EntityType="Self.Komentar_Tacka" />
+          <EntitySet Name="KORISNIKs" EntityType="Self.KORISNIK" />
+          <EntitySet Name="KORISNIK_SUBJEKAT" EntityType="Self.KORISNIK_SUBJEKAT" />
+          <EntitySet Name="Logovis" EntityType="Self.Logovi" />
+          <EntitySet Name="Mails" EntityType="Self.Mail" />
+          <EntitySet Name="Masovnas" EntityType="Self.Masovna" />
+          <EntitySet Name="Masovna_poruka" EntityType="Self.Masovna_poruka" />
+          <EntitySet Name="MasovniMails" EntityType="Self.MasovniMail" />
+          <EntitySet Name="MasovniMail_Poruka" EntityType="Self.MasovniMail_Poruka" />
+          <EntitySet Name="Porukes" EntityType="Self.Poruke" />
+          <EntitySet Name="Pozvani_Korisnici" EntityType="Self.Pozvani_Korisnici" />
+          <EntitySet Name="Pristup_Korisnik" EntityType="Self.Pristup_Korisnik" />
+          <EntitySet Name="SEDNICEs" EntityType="Self.SEDNICE" />
+          <EntitySet Name="STATUS_AKATA" EntityType="Self.STATUS_AKATA" />
+          <EntitySet Name="Status_dokumenta" EntityType="Self.Status_dokumenta" />
+          <EntitySet Name="SUBJEKATs" EntityType="Self.SUBJEKAT" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tacke_Dnevnog_Reda" EntityType="Self.Tacke_Dnevnog_Reda" />
+          <EntitySet Name="TIP_SEDNICE" EntityType="Self.TIP_SEDNICE" />
+          <EntitySet Name="ZakljucakAmandmen" EntityType="Self.ZakljucakAmandman" />
+          <EntitySet Name="Zapisniks" EntityType="Self.Zapisnik" />
+          <AssociationSet Name="FK_Amandman_DOKUMENTA" Association="Self.FK_Amandman_DOKUMENTA">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTAs" />
+            <End Role="Amandman" EntitySet="Amandmen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Amandman_KORISNIK" Association="Self.FK_Amandman_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="Amandman" EntitySet="Amandmen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZakljucakAmandman_Amandman" Association="Self.FK_ZakljucakAmandman_Amandman">
+            <End Role="Amandman" EntitySet="Amandmen" />
+            <End Role="ZakljucakAmandman" EntitySet="ZakljucakAmandmen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AmandmanDok_pomocna_DOKUMENTA" Association="Self.FK_AmandmanDok_pomocna_DOKUMENTA">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTAs" />
+            <End Role="AmandmanDok_pomocna" EntitySet="AmandmanDok_pomocna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Amandmani_pomocna_KORISNIK" Association="Self.FK_Amandmani_pomocna_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="Amandmani_pomocna" EntitySet="Amandmani_pomocna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOKUMENTA_Status_dokumenta" Association="Self.FK_DOKUMENTA_Status_dokumenta">
+            <End Role="Status_dokumenta" EntitySet="Status_dokumenta" />
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokumenta_Subjekat_DOKUMENTA" Association="Self.FK_Dokumenta_Subjekat_DOKUMENTA">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTAs" />
+            <End Role="Dokumenta_Subjekat" EntitySet="Dokumenta_Subjekat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokumenta_Subjekat_DOKUMENTA1" Association="Self.FK_Dokumenta_Subjekat_DOKUMENTA1">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTAs" />
+            <End Role="Dokumenta_Subjekat" EntitySet="Dokumenta_Subjekat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Komentar_DOKUMENTA" Association="Self.FK_Komentar_DOKUMENTA">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTAs" />
+            <End Role="Komentar" EntitySet="Komentars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tacke_Dnevnog_Reda_DOKUMENTA" Association="Self.FK_Tacke_Dnevnog_Reda_DOKUMENTA">
+            <End Role="DOKUMENTA" EntitySet="DOKUMENTAs" />
+            <End Role="Tacke_Dnevnog_Reda" EntitySet="Tacke_Dnevnog_Reda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokumenta_Subjekat_SUBJEKAT" Association="Self.FK_Dokumenta_Subjekat_SUBJEKAT">
+            <End Role="SUBJEKAT" EntitySet="SUBJEKATs" />
+            <End Role="Dokumenta_Subjekat" EntitySet="Dokumenta_Subjekat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hitan_Postupak_KORISNIK" Association="Self.FK_Hitan_Postupak_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="Hitan_Postupak" EntitySet="Hitan_Postupak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izmene_DnReda_KORISNIK" Association="Self.FK_Izmene_DnReda_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="Izmene_DnReda" EntitySet="Izmene_DnReda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izmene_DnReda_SEDNICE" Association="Self.FK_Izmene_DnReda_SEDNICE">
+            <End Role="SEDNICE" EntitySet="SEDNICEs" />
+            <End Role="Izmene_DnReda" EntitySet="Izmene_DnReda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Komentar_Tacka_Tacke_Dnevnog_Reda" Association="Self.FK_Komentar_Tacka_Tacke_Dnevnog_Reda">
+            <End Role="Tacke_Dnevnog_Reda" EntitySet="Tacke_Dnevnog_Reda" />
+            <End Role="Komentar_Tacka" EntitySet="Komentar_Tacka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KORISNIK_SUBJEKAT_KORISNIK" Association="Self.FK_KORISNIK_SUBJEKAT_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="KORISNIK_SUBJEKAT" EntitySet="KORISNIK_SUBJEKAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logovi_KORISNIK" Association="Self.FK_Logovi_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="Logovi" EntitySet="Logovis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Masovna_KORISNIK" Association="Self.FK_Masovna_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="Masovna" EntitySet="Masovnas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasovniMail_KORISNIK" Association="Self.FK_MasovniMail_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="MasovniMail" EntitySet="MasovniMails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poruke_KORISNIK" Association="Self.FK_Poruke_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="Poruke" EntitySet="Porukes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pozvani_Korisnici_KORISNIK" Association="Self.FK_Pozvani_Korisnici_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="Pozvani_Korisnici" EntitySet="Pozvani_Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pristup_Korisnik_KORISNIK" Association="Self.FK_Pristup_Korisnik_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="Pristup_Korisnik" EntitySet="Pristup_Korisnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEDNICE_KORISNIK" Association="Self.FK_SEDNICE_KORISNIK">
+            <End Role="KORISNIK" EntitySet="KORISNIKs" />
+            <End Role="SEDNICE" EntitySet="SEDNICEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KORISNIK_SUBJEKAT_SUBJEKAT" Association="Self.FK_KORISNIK_SUBJEKAT_SUBJEKAT">
+            <End Role="SUBJEKAT" EntitySet="SUBJEKATs" />
+            <End Role="KORISNIK_SUBJEKAT" EntitySet="KORISNIK_SUBJEKAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mail_SEDNICE" Association="Self.FK_Mail_SEDNICE">
+            <End Role="SEDNICE" EntitySet="SEDNICEs" />
+            <End Role="Mail" EntitySet="Mails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Masovna_Masovna_poruka" Association="Self.FK_Masovna_Masovna_poruka">
+            <End Role="Masovna_poruka" EntitySet="Masovna_poruka" />
+            <End Role="Masovna" EntitySet="Masovnas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasovniMail_MasovniMail_Poruka" Association="Self.FK_MasovniMail_MasovniMail_Poruka">
+            <End Role="MasovniMail_Poruka" EntitySet="MasovniMail_Poruka" />
+            <End Role="MasovniMail" EntitySet="MasovniMails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pozvani_Korisnici_SEDNICE" Association="Self.FK_Pozvani_Korisnici_SEDNICE">
+            <End Role="SEDNICE" EntitySet="SEDNICEs" />
+            <End Role="Pozvani_Korisnici" EntitySet="Pozvani_Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEDNICE_SUBJEKAT" Association="Self.FK_SEDNICE_SUBJEKAT">
+            <End Role="SUBJEKAT" EntitySet="SUBJEKATs" />
+            <End Role="SEDNICE" EntitySet="SEDNICEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEDNICE_TIP_SEDNICE" Association="Self.FK_SEDNICE_TIP_SEDNICE">
+            <End Role="TIP_SEDNICE" EntitySet="TIP_SEDNICE" />
+            <End Role="SEDNICE" EntitySet="SEDNICEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tacke_Dnevnog_Reda_SEDNICE" Association="Self.FK_Tacke_Dnevnog_Reda_SEDNICE">
+            <End Role="SEDNICE" EntitySet="SEDNICEs" />
+            <End Role="Tacke_Dnevnog_Reda" EntitySet="Tacke_Dnevnog_Reda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapisnik_SEDNICE" Association="Self.FK_Zapisnik_SEDNICE">
+            <End Role="SEDNICE" EntitySet="SEDNICEs" />
+            <End Role="Zapisnik" EntitySet="Zapisniks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tacke_Dnevnog_Reda_SUBJEKAT" Association="Self.FK_Tacke_Dnevnog_Reda_SUBJEKAT">
+            <End Role="SUBJEKAT" EntitySet="SUBJEKATs" />
+            <End Role="Tacke_Dnevnog_Reda" EntitySet="Tacke_Dnevnog_Reda" />
+          </AssociationSet>
+          <EntitySet Name="C__MigrationHistory" EntityType="E_Sednice_Indjija_newModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="E_Sednice_Indjija_newModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="E_Sednice_Indjija_newModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="E_Sednice_Indjija_newModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="E_Sednice_Indjija_newModel.AspNetUser" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="E_Sednice_Indjija_newModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="E_Sednice_Indjija_newModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="E_Sednice_Indjija_newModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="E_Sednice_Indjija_newModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="E_Sednice_Indjija_newModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="E_Sednice_Indjija_newModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="E_Sednice_Indjija_newModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="E_Sednice_Indjija_newModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="E_Sednice_Indjija_newModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="E_Sednice_Indjija_newModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="E_Sednice_Indjija_newModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="E_Sednice_Indjija_newModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="E_Sednice_Indjija_newModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="E_Sednice_Indjija_newModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="E_Sednice_Indjija_newModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="E_Sednice_Indjija_newModelStoreContainer" CdmEntityContainer="E_Sednice_Indjija_newEntities1">
+          <EntitySetMapping Name="Amandmen">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Amandman">
+              <MappingFragment StoreEntitySet="Amandman">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Postavio" ColumnName="Postavio" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="Odnosi_se" ColumnName="Odnosi_se" />
+                <ScalarProperty Name="Obrazlozenje" ColumnName="Obrazlozenje" />
+                <ScalarProperty Name="Dokument" ColumnName="Dokument" />
+                <ScalarProperty Name="Blagovremen" ColumnName="Blagovremen" />
+                <ScalarProperty Name="odustao" ColumnName="odustao" />
+                <ScalarProperty Name="vreme_odustao" ColumnName="vreme_odustao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AmandmanDok_pomocna">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.AmandmanDok_pomocna">
+              <MappingFragment StoreEntitySet="AmandmanDok_pomocna">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Amandman" ColumnName="Amandman" />
+                <ScalarProperty Name="Dokument" ColumnName="Dokument" />
+                <ScalarProperty Name="KorisniKU" ColumnName="KorisniKU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Amandmani_pomocna">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Amandmani_pomocna">
+              <MappingFragment StoreEntitySet="Amandmani_pomocna">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Amandman" ColumnName="Amandman" />
+                <ScalarProperty Name="Dnevni_Red" ColumnName="Dnevni_Red" />
+                <ScalarProperty Name="Odbornik" ColumnName="Odbornik" />
+                <ScalarProperty Name="KorisnikU" ColumnName="KorisnikU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOKUMENTAs">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.DOKUMENTA">
+              <MappingFragment StoreEntitySet="DOKUMENTA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+                <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+                <ScalarProperty Name="DATUM_USVAJANJA" ColumnName="DATUM_USVAJANJA" />
+                <ScalarProperty Name="POSTAVIO" ColumnName="POSTAVIO" />
+                <ScalarProperty Name="TEKST" ColumnName="TEKST" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="LINK_ZAVRSEN" ColumnName="LINK_ZAVRSEN" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="DATUM_POCETKA_PRIMENE" ColumnName="DATUM_POCETKA_PRIMENE" />
+                <ScalarProperty Name="Osnovni_dokument" ColumnName="Osnovni_dokument" />
+                <ScalarProperty Name="ID_Osnovnog_Dokumenta" ColumnName="ID_Osnovnog_Dokumenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dokumenta_Subjekat">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Dokumenta_Subjekat">
+              <MappingFragment StoreEntitySet="Dokumenta_Subjekat">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_DOKUMENTA" ColumnName="ID_DOKUMENTA" />
+                <ScalarProperty Name="ID_SUBJEKAT" ColumnName="ID_SUBJEKAT" />
+                <ScalarProperty Name="KORAK_ZAVRSEN" ColumnName="KORAK_ZAVRSEN" />
+                <ScalarProperty Name="REDNI_BROJ" ColumnName="REDNI_BROJ" />
+                <ScalarProperty Name="Postavio_korisnik" ColumnName="Postavio_korisnik" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+                <ScalarProperty Name="Brojac" ColumnName="Brojac" />
+                <ScalarProperty Name="ID_Verzija_Dokumenta" ColumnName="ID_Verzija_Dokumenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hitan_Postupak">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Hitan_Postupak">
+              <MappingFragment StoreEntitySet="Hitan_Postupak">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Korisnik" ColumnName="Korisnik" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Sednice" ColumnName="Sednice" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Izmene_DnReda">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Izmene_DnReda">
+              <MappingFragment StoreEntitySet="Izmene_DnReda">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sednica" ColumnName="Sednica" />
+                <ScalarProperty Name="Korisnik" ColumnName="Korisnik" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="blagovremena" ColumnName="blagovremena" />
+                <ScalarProperty Name="tacka" ColumnName="tacka" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klase_dnevnog_reda">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Klase_dnevnog_reda">
+              <MappingFragment StoreEntitySet="Klase_dnevnog_reda">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Klase" ColumnName="Klase" />
+                <ScalarProperty Name="AKTIVAN" ColumnName="AKTIVAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Komentars">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Komentar">
+              <MappingFragment StoreEntitySet="Komentar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Komentar1" ColumnName="Komentar" />
+                <ScalarProperty Name="Postavio" ColumnName="Postavio" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+                <ScalarProperty Name="Dokument" ColumnName="Dokument" />
+                <ScalarProperty Name="Odnosi_Se" ColumnName="Odnosi_Se" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Komentar_Tacka">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Komentar_Tacka">
+              <MappingFragment StoreEntitySet="Komentar_Tacka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Komentar" ColumnName="Komentar" />
+                <ScalarProperty Name="Postavio" ColumnName="Postavio" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+                <ScalarProperty Name="Tacka" ColumnName="Tacka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KORISNIKs">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.KORISNIK">
+              <MappingFragment StoreEntitySet="KORISNIK">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IME" ColumnName="IME" />
+                <ScalarProperty Name="PREZIME" ColumnName="PREZIME" />
+                <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+                <ScalarProperty Name="FUNKCIJA" ColumnName="FUNKCIJA" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="LOZINKA" ColumnName="LOZINKA" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="MOBILNI" ColumnName="MOBILNI" />
+                <ScalarProperty Name="Aktivan" ColumnName="Aktivan" />
+                <ScalarProperty Name="Potrebna_potvrda" ColumnName="Potrebna_potvrda" />
+                <ScalarProperty Name="admin" ColumnName="admin" />
+                <ScalarProperty Name="sluzbeno" ColumnName="sluzbeno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KORISNIK_SUBJEKAT">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.KORISNIK_SUBJEKAT">
+              <MappingFragment StoreEntitySet="KORISNIK_SUBJEKAT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_SUBJEKAT" ColumnName="ID_SUBJEKAT" />
+                <ScalarProperty Name="ID_KORISNIK" ColumnName="ID_KORISNIK" />
+                <ScalarProperty Name="PRIPADA_GRUPI" ColumnName="PRIPADA_GRUPI" />
+                <ScalarProperty Name="DATUM" ColumnName="DATUM" />
+                <ScalarProperty Name="Prva" ColumnName="Prva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logovis">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Logovi">
+              <MappingFragment StoreEntitySet="Logovi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="vreme" ColumnName="vreme" />
+                <ScalarProperty Name="korisnikID" ColumnName="korisnikID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mails">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Mail">
+              <MappingFragment StoreEntitySet="Mail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sednica_ID" ColumnName="Sednica_ID" />
+                <ScalarProperty Name="Mailovi" ColumnName="Mailovi" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Masovnas">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Masovna">
+              <MappingFragment StoreEntitySet="Masovna">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Poruka" ColumnName="Poruka" />
+                <ScalarProperty Name="Prima" ColumnName="Prima" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Masovna_poruka">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Masovna_poruka">
+              <MappingFragment StoreEntitySet="Masovna_poruka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+                <ScalarProperty Name="Poslat" ColumnName="Poslat" />
+                <ScalarProperty Name="Salje" ColumnName="Salje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasovniMails">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.MasovniMail">
+              <MappingFragment StoreEntitySet="MasovniMail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Poruka" ColumnName="Poruka" />
+                <ScalarProperty Name="Prima" ColumnName="Prima" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasovniMail_Poruka">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.MasovniMail_Poruka">
+              <MappingFragment StoreEntitySet="MasovniMail_Poruka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+                <ScalarProperty Name="Poslat" ColumnName="Poslat" />
+                <ScalarProperty Name="Salje" ColumnName="Salje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Porukes">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Poruke">
+              <MappingFragment StoreEntitySet="Poruke">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Salje" ColumnName="Salje" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="Prima" ColumnName="Prima" />
+                <ScalarProperty Name="procitana" ColumnName="procitana" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+                <ScalarProperty Name="slanje" ColumnName="slanje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pozvani_Korisnici">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Pozvani_Korisnici">
+              <MappingFragment StoreEntitySet="Pozvani_Korisnici">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Korisnik_ID" ColumnName="Korisnik_ID" />
+                <ScalarProperty Name="Sednica_ID" ColumnName="Sednica_ID" />
+                <ScalarProperty Name="Potvrdio" ColumnName="Potvrdio" />
+                <ScalarProperty Name="Vreme_potvrde" ColumnName="Vreme_potvrde" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="SMS" ColumnName="SMS" />
+                <ScalarProperty Name="Komentar" ColumnName="Komentar" />
+                <ScalarProperty Name="Prisustvuje" ColumnName="Prisustvuje" />
+                <ScalarProperty Name="Prikaz" ColumnName="Prikaz" />
+                <ScalarProperty Name="Datum_SMS" ColumnName="Datum_SMS" />
+                <ScalarProperty Name="Datum_Mail" ColumnName="Datum_Mail" />
+                <ScalarProperty Name="Vreme_Pozvan" ColumnName="Vreme_Pozvan" />
+                <ScalarProperty Name="Sistem" ColumnName="Sistem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pristup_Korisnik">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Pristup_Korisnik">
+              <MappingFragment StoreEntitySet="Pristup_Korisnik">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Korisnik" ColumnName="Id_Korisnik" />
+                <ScalarProperty Name="Sednice" ColumnName="Sednice" />
+                <ScalarProperty Name="Zapisnik" ColumnName="Zapisnik" />
+                <ScalarProperty Name="Dokumenta" ColumnName="Dokumenta" />
+                <ScalarProperty Name="Clanovi" ColumnName="Clanovi" />
+                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+                <ScalarProperty Name="Organ" ColumnName="Organ" />
+                <ScalarProperty Name="Statusi" ColumnName="Statusi" />
+                <ScalarProperty Name="Pozivanje" ColumnName="Pozivanje" />
+                <ScalarProperty Name="Amandmani" ColumnName="Amandmani" />
+                <ScalarProperty Name="Dnevni_red" ColumnName="Dnevni_red" />
+                <ScalarProperty Name="IzmenaDnRedaPosle24Sata" ColumnName="IzmenaDnRedaPosle24Sata" />
+                <ScalarProperty Name="Komentari" ColumnName="Komentari" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEDNICEs">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.SEDNICE">
+              <MappingFragment StoreEntitySet="SEDNICE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+                <ScalarProperty Name="SUBJEKAT" ColumnName="SUBJEKAT" />
+                <ScalarProperty Name="DATUM" ColumnName="DATUM" />
+                <ScalarProperty Name="Vreme_sat" ColumnName="Vreme_sat" />
+                <ScalarProperty Name="Vreme_minut" ColumnName="Vreme_minut" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="date_time" ColumnName="date_time" />
+                <ScalarProperty Name="TIP_SEDNICE" ColumnName="TIP_SEDNICE" />
+                <ScalarProperty Name="Predsedava" ColumnName="Predsedava" />
+                <ScalarProperty Name="Zavrsena" ColumnName="Zavrsena" />
+                <ScalarProperty Name="Brojac" ColumnName="Brojac" />
+                <ScalarProperty Name="datum_pretraga" ColumnName="datum_pretraga" />
+                <ScalarProperty Name="zavodni_broj" ColumnName="zavodni_broj" />
+                <ScalarProperty Name="mesto" ColumnName="mesto" />
+                <ScalarProperty Name="na_osnovu" ColumnName="na_osnovu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATUS_AKATA">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.STATUS_AKATA">
+              <MappingFragment StoreEntitySet="STATUS_AKATA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="AKTIVAN" ColumnName="AKTIVAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status_dokumenta">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Status_dokumenta">
+              <MappingFragment StoreEntitySet="Status_dokumenta">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUBJEKATs">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.SUBJEKAT">
+              <MappingFragment StoreEntitySet="SUBJEKAT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+                <ScalarProperty Name="KOMENTAR" ColumnName="KOMENTAR" />
+                <ScalarProperty Name="AKTIVAN" ColumnName="AKTIVAN" />
+                <ScalarProperty Name="Predlagac" ColumnName="Predlagac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tacke_Dnevnog_Reda">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Tacke_Dnevnog_Reda">
+              <MappingFragment StoreEntitySet="Tacke_Dnevnog_Reda">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Naziv_tacke" ColumnName="Naziv_tacke" />
+                <ScalarProperty Name="Dokument" ColumnName="Dokument" />
+                <ScalarProperty Name="Sednica" ColumnName="Sednica" />
+                <ScalarProperty Name="Redni_broj" ColumnName="Redni_broj" />
+                <ScalarProperty Name="Verzija" ColumnName="Verzija" />
+                <ScalarProperty Name="Link_Dokumenta" ColumnName="Link_Dokumenta" />
+                <ScalarProperty Name="prva" ColumnName="prva" />
+                <ScalarProperty Name="hitna" ColumnName="hitna" />
+                <ScalarProperty Name="predlagac" ColumnName="predlagac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIP_SEDNICE">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.TIP_SEDNICE">
+              <MappingFragment StoreEntitySet="TIP_SEDNICE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OPIS" ColumnName="OPIS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZakljucakAmandmen">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.ZakljucakAmandman">
+              <MappingFragment StoreEntitySet="ZakljucakAmandman">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Amandman" ColumnName="Amandman" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="KorisnikU" ColumnName="KorisnikU" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zapisniks">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.Zapisnik">
+              <MappingFragment StoreEntitySet="Zapisnik">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Zapisnik1" ColumnName="Zapisnik" />
+                <ScalarProperty Name="Audio_zapis" ColumnName="Audio_zapis" />
+                <ScalarProperty Name="Broj_sednice" ColumnName="Broj_sednice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="E_Sednice_Indjija_newModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="E_Sednice_Indjija_newModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

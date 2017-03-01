@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ElektronskeSednice.Models.Tacke_Dnevnog_Reda>
+
+
+@{
+    ViewBag.Title = ViewRes.SedniceStrings.DnevniRed;
+}
+
+<h2>@ViewRes.SedniceStrings.DnevniRed</h2>
+
+<table class="table">
+    <thead>
+        <tr class="active">
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv_tacke)
+            </th>
+            <th>
+                @ViewRes.SedniceStrings.Predlagac
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var list = Model.ToList();
+            for (int item = 0; item < list.Count; item++)
+            {
+                <tr>
+                    <td>
+                        @if (item == 0)
+                        {
+                            @Html.DisplayFor(modelItem => list[item].Naziv_tacke);
+                        }
+                        @if (item > 0 && (list[item - 1].Redni_broj != list[item].Redni_broj))
+                        {
+                            @Html.DisplayFor(modelItem => list[item].Redni_broj) <text>. </text> @Html.DisplayFor(modelItem => list[item].Naziv_tacke);
+
+                        }
+                        @if (!string.IsNullOrEmpty(list[item].Link_Dokumenta))
+                        {
+                            <ul>
+                                <li>
+                                    <a href="@Html.DisplayFor(modelItem => list[item].Link_Dokumenta)">@Html.DisplayFor(modelItem => list[item].DOKUMENTA.NAZIV)</a>
+                                </li>
+                            </ul>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => list[item].SUBJEKAT.NAZIV)
+                    </td>
+                </tr>
+            }
+        }
+    <tbody>
+</table>
+<div>
+    @Html.ActionLink(ViewRes.SharedStrings.Nazad, "Administracija")
+</div>

@@ -1,0 +1,113 @@
+﻿@model ElektronskeSednice.Models.SEDNICE
+@section head
+{
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen" type="text" />
+}
+
+@section scripts
+{
+    <script src="~/Scripts/moment-with-locales.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.datetimepicker').datetimepicker({
+                locale: 'sr',
+                format: 'DD.MM.YYYY HH:mm'
+            });
+        });
+    </script>
+
+}
+
+@{
+    ViewBag.Title = ViewRes.SedniceStrings.NovaSednica;
+}
+
+<h2>@ViewRes.SedniceStrings.NovaSednica</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.BROJ, ViewRes.SedniceStrings.BrojSednice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BROJ, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BROJ, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SUBJEKAT, ViewRes.SedniceStrings.Organ, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SUBJEKAT", null, "---", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SUBJEKAT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DATUM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DATUM, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
+                @Html.ValidationMessageFor(model => model.DATUM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TIP_SEDNICE, ViewRes.SedniceStrings.TipSednice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TIP_SEDNICE", null, "---", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TIP_SEDNICE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Predsedava, ViewRes.SedniceStrings.Predsedava, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Predsedava", null, "---", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Predsedava, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.zavodni_broj, ViewRes.SedniceStrings.ZavodniBroj, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.zavodni_broj, new { htmlAttributes = new { @class = "form-control", rows = 2 } })
+                @Html.ValidationMessageFor(model => model.zavodni_broj, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mesto, ViewRes.SedniceStrings.Mesto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mesto, new { htmlAttributes = new { @class = "form-control", rows = 5 } })
+                @Html.ValidationMessageFor(model => model.mesto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.na_osnovu, ViewRes.SedniceStrings.NaOsnovu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.na_osnovu, new { htmlAttributes = new { @class = "form-control", rows = 10 } })
+                @Html.ValidationMessageFor(model => model.na_osnovu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@ViewRes.SharedStrings.Sacuvaj" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(@ViewRes.SharedStrings.Nazad, "Administracija")
+</div>
+@*<script type="text/javascript">
+    $(function () {
+        $('.datepicker').datepicker();
+    });
+</script>*@

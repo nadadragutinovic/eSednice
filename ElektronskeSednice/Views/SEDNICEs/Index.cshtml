@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ElektronskeSednice.Models.SEDNICE>
+
+
+@{
+    ViewBag.Title = ViewRes.SedniceStrings.ZakazaneSednice;
+}
+
+<h2>@ViewRes.SedniceStrings.ZakazaneSednice</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SUBJEKAT1.NAZIV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BROJ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATUM)
+        </th>
+        <th>
+            @ViewRes.SedniceStrings.SednicuSaziva
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIP_SEDNICE1.OPIS)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SUBJEKAT1.NAZIV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BROJ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATUM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KORISNIK.IME) @Html.DisplayFor(modelItem => item.KORISNIK.PREZIME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIP_SEDNICE1.OPIS)
+            </td>
+            <td>
+                @Html.ActionLink(ViewRes.SedniceStrings.DnevniRed, "DnevniRed", new { sednicaID = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

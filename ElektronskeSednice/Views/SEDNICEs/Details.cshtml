@@ -1,0 +1,138 @@
+﻿@model ElektronskeSednice.Models.SEDNICE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SEDNICE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BROJ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BROJ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATUM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATUM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vreme_sat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vreme_sat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vreme_minut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vreme_minut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zavrsena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zavrsena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brojac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brojac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datum_pretraga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datum_pretraga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.zavodni_broj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.zavodni_broj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.na_osnovu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.na_osnovu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KORISNIK.IME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KORISNIK.IME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SUBJEKAT1.NAZIV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUBJEKAT1.NAZIV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIP_SEDNICE1.OPIS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIP_SEDNICE1.OPIS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
