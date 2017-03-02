@@ -270,10 +270,15 @@ namespace ElektronskeSednice.Controllers
                 string mimeType = file.ContentType;
                 System.IO.Stream fileContent = file.InputStream;
                 //To save file, use SaveAs method
-                file.SaveAs(Server.MapPath("~/Upload") + fileName);
+                file.SaveAs(Server.MapPath("~/Uploads/Dokumenta/") + fileName);
+                //file.SaveAs(fileName);
 
                 var dokument = new DOKUMENTA();
-                dokument.LINK = Server.MapPath("~/Upload") + fileName;
+                dokument.LINK = "~/Uploads/Dokumenta/" + fileName;
+                dokument.NAZIV = nazivTacke;
+                dokument.STATUS = 0;
+                dokument.Osnovni_dokument = true;
+                //dokument.POSTAVIO = 
                 db.DOKUMENTAs.Add(dokument);
                 db.SaveChanges();
                 int idDokumenta = dokument.ID;
@@ -285,6 +290,9 @@ namespace ElektronskeSednice.Controllers
                 tackeDR.predlagac = int.Parse(subjekat);
                 tackeDR.Redni_broj = int.Parse(brojTacke);
                 tackeDR.Dokument = idDokumenta;
+                tackeDR.Link_Dokumenta = "~/Uploads/Dokumenta/" + fileName;
+                tackeDR.prva = false;
+                tackeDR.hitna = false;
 
                 db.Tacke_Dnevnog_Reda.Add(tackeDR);
                 db.SaveChanges();

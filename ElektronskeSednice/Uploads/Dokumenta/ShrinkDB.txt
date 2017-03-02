@@ -1,0 +1,18 @@
+da pronadjemo koji je log fajl u pitanju
+EXEC sp_helpfile
+
+
+shrink database log file
+USE <DB_NAME>;
+GO
+-- Truncate the log by changing the database recovery model to SIMPLE.
+ALTER DATABASE <DB_NAME>
+SET RECOVERY SIMPLE;
+GO
+-- Shrink the truncated log file to 1 MB.
+DBCC SHRINKFILE (<DB_NAME>_log, 1);
+GO
+-- Reset the database recovery model.
+ALTER DATABASE <DB_NAME>
+SET RECOVERY FULL;
+GO

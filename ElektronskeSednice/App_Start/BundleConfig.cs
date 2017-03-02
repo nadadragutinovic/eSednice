@@ -32,7 +32,7 @@ namespace ElektronskeSednice
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-cosmo.css",
                       "~/Content/bootstrap-datetimepicker.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
         }
     }
 }

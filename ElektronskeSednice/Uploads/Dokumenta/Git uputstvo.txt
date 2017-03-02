@@ -1,0 +1,20 @@
+﻿GIT repository
+
+ - kreiranje repositorijuma na 192.168.11.3 (putty.exe)
+	cd /var/git/
+	git init --bare NazivRep.git
+	chown -R -v www-data.www-data /var/git/NazivRep.git
+
+ - gitbash 
+	cd / d / GIT
+	git init NazivRep	
+	cd / d / GIT / NazivRep
+	git add --all
+	git commit -m "Inicijalni komit"
+	git remote add origin http://192.168.11.3:8080/git/NazivRep.git
+	git push origin master
+
+	(obavezno imati .gitignore fajl)
+
+- pravljenje lokalne grane 
+	git checkout -b nazivgrane

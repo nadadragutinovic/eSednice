@@ -7,6 +7,9 @@
 @section scripts
 {
     <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+        });
         $("#btnNovaTacka").click(function () {
             $("#novaTackaDRUnos").slideToggle("slow");
         });
@@ -97,12 +100,15 @@
                         contentType: false,
                         type: "POST",
                         success: function (data) {
-                            alert("DONE");
-
+                            //alert("DONE");
                             files1Uploader.clear();
+                            $("#obavestenje").modal('toggle');
+                            $("#obavestenje p").html('Uspešno ste uneli tačku dnevnog reda.');
                         },
                         error: function (data) {
-                            alert("ERROR - " + data.responseText);
+                            $("#obavestenje").modal('toggle');
+                            $("#obavestenje p").html('Nastupila je neka greška.' + data.responseText);
+                            //alert("ERROR - " + data.responseText);
                         }
                     });
                 });
@@ -127,7 +133,7 @@
                 <div class="form-group">
                     <div class="control-label col-md-2">Broj tačke</div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="brojTackeDR"/>
+                        <input type="text" class="form-control" id="brojTackeDR" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -169,7 +175,7 @@
         </div>
     </div>
 </div>
-<table class="table">
+<table class="dnevni-red table">
     <thead>
         <tr class="active">
             <th>
@@ -189,12 +195,14 @@
                     <td colspan="2">
                         @if (item == 0)
                         {
-                            @Html.DisplayFor(modelItem => list[item].Naziv_tacke)                        ;
+                            <b>@Html.DisplayFor(modelItem => list[item].Naziv_tacke)</b>
+                            <button type="button" class="btn btn-warning pull-right" id="btnUnesiTacku">Izmeni</button>
                         }
                         @if (item > 0 && (list[item - 1].Redni_broj != list[item].Redni_broj))
                         {
-                            @Html.DisplayFor(modelItem => list[item].Redni_broj) <text>. </text> @Html.DisplayFor(modelItem => list[item].Naziv_tacke);
-
+                            <br/><hr/>
+                            <b>@Html.DisplayFor(modelItem => list[item].Redni_broj) <text>. </text> @Html.DisplayFor(modelItem => list[item].Naziv_tacke)</b>
+                            <button type="button" class="btn btn-warning pull-right" id="btnIzmeniTDR_@list[item].id">Izmeni</button>
                         }
                     </td>
                 </tr>
@@ -222,5 +230,20 @@
 <div>
     @Html.ActionLink(ViewRes.SharedStrings.Nazad, "Administracija")
 </div>
-
+<div class="modal" id="obavestenje">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Poruka</h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
+            </div>
+        </div>
+    </div>
+</div>
 
