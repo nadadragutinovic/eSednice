@@ -716,6 +716,7 @@
     <Content Include="Views\SEDNICEs\Administracija.cshtml" />
     <Content Include="Views\SEDNICEs\_PozvaniKorisnici.cshtml" />
     <Content Include="Views\SEDNICEs\DnevniRedEdit.cshtml" />
+    <Content Include="Views\SEDNICEs\_TackeDnevnogReda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

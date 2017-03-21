@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ElektronskeSednice.Models.Tacke_Dnevnog_Reda>
+<table class="table small">
+    <thead>
+        <tr class="active">
+            <th>
+                Dokumenta
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @*@{
+            var list = Model.ToList();
+            for (int item = 0; item < list.Count; item++)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => list[item].Dokument.GetValueOrDefault())</td>
+                </tr>
+            }
+        }*@
+    </tbody>
+</table>

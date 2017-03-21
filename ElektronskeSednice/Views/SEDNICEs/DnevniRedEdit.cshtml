@@ -14,22 +14,57 @@
             $("#novaTackaDRUnos").slideToggle("slow");
         });
 
-        $("[id^=btnIzmeniTDR_]").click(function () {
-            //window.location.hash = '#novaTackaDRUnos';
-            var container = $('div'),
-                scrollTo = $('#novaTackaDRUnos');
-            container.scrollTop(
-                scrollTo.offset().top - container.offset().top + container.scrollTop()
-            );
-            //document.location.hash = "#novaTackaDRUnos";
-            //window.scrollTo(0, 0);
-            var idTDR = this.id.substring(13);
-            $("#novaTackaDRUnos").slideDown("slow");
+        //$("[id^=btnIzmeniTDR_]").click(function () {
+        //    //window.location.hash = '#novaTackaDRUnos';
+        //    var container = $('div'),
+        //        scrollTo = $('#novaTackaDRUnos');
+        //    container.scrollTop(
+        //        scrollTo.offset().top - container.offset().top + container.scrollTop()
+        //    );
+        //    //document.location.hash = "#novaTackaDRUnos";
+        //    //window.scrollTo(0, 0);
+        //    var idTDR = this.id.substring(13);
+        //    $("#novaTackaDRUnos").slideDown("slow");
 
+        //    var aa = "#redniBroj_" + idTDR;
+        //    var bb = $(aa).text();
+        //    $("#brojTackeDR").val(bb);
+            
+        //});
+
+        $("[id^=btnIzmeniTDR_]").click(function () {
+
+            var idTDR = this.id.substring(13);
+            var sednicaId = getParamValuesByName("sednicaID");
             var aa = "#redniBroj_" + idTDR;
             var bb = $(aa).text();
-            $("#brojTackeDR").val(bb);
-            
+
+            $("#promenaTDR").modal('toggle');
+            $("#promenaTDR p").html('Br tačke dnevnog reda:' + bb + "\n\n Id tacke dnevnog reda: " + idTDR);
+
+            var formData = new FormData();
+            formData.append('sednicaId', sednicaId);
+            formData.append('brojTacke', bb);
+
+            @*$.ajax({
+                url: '@Url.Action("_TackeDnevnogReda", "SEDNICEs")',
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: "POST",
+                success: function (data) {
+                    // alert(JSON.stringify(data)); show entire object in JSON format
+                    $.each(data, function (i, obj) {
+                        alert(obj.Redni_broj);
+                    });
+                },
+                error: function (data) {
+                    $("#promenaTDR").modal('toggle');
+                    $("#promenaTDR p").html('Nastupila je neka greška.' + data.responseText);
+                    //alert("ERROR - " + data.responseText);
+                }
+            });*@
+
         });
 
         $(window).load
@@ -267,7 +302,7 @@
         </div>
     </div>
 </div>
-<div class="modal" id="promenaTDR">
+<div class="modal" id="promenaTDR" data-url='@Url.Action("_TackeDnevnogReda")'>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

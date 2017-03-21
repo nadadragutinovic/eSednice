@@ -300,5 +300,14 @@ namespace ElektronskeSednice.Controllers
             return Json("Uploaded " + Request.Files.Count + " files");
         }
 
+        public ActionResult _TackeDnevnogReda(int sednicaId, int brojTacke)
+        {
+            var message = String.Empty;
+
+            var tackaDnevnogReda = db.Tacke_Dnevnog_Reda.Include(s => s.DOKUMENTA).Include(s => s.SUBJEKAT).Where(s => s.Sednica == sednicaId).Where(s => s.Redni_broj == brojTacke);
+
+            //return Json(tackaDnevnogReda, JsonRequestBehavior.AllowGet);
+            return PartialView(tackaDnevnogReda.ToList());
+        }
     }
 }
